@@ -1,0 +1,2 @@
+insert into department(dept_id,dept_name,dept_desc,dept_type,company_id,start_date,end_date) select dept_id_seq.nextval,a.dept_name,a.dept_desc,a.dept_type,b.company_id,sysdate,to_date('12-31-9999','mm-dd-yyyy') from department_temp a, company b where b.company_name='&my_company';
+commit;

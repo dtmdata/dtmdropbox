@@ -1,0 +1,41 @@
+Jacob#$#$Smith#$#$jacob.smith@mediumcompany.com#$HR#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Jacob Smith#$jacob.smith@mediumcompany.com
+Michelle#$#$Johnson#$#$michelle.johnson@mediumcompany.com#$IT#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Jacob Smith#$jacob.smith@mediumcompany.com
+Julia#$#$Midler#$#$julia.midler@mediumcompany.com#$Sales#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Jacob Smith#$jacob.smith@mediumcompany.com
+JR#$#$Newberry#$#$jr.newberry@mediumcompany.com#$Marketing#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Jacob Smith#$jacob.smith@mediumcompany.com
+Alex#$#$Riley#$#$alex.riley@mediumcompany.com#$R&D#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Jacob Smith#$jacob.smith@mediumcompany.com
+Erin#$#$Jankovich#$#$erin.jankovich@mediumcompany.com#$Network#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Jacob Smith#$jacob.smith@mediumcompany.com
+
+Robert#$#$House#$#$robert.house@mediumcompany.com#$IT#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Michelle Johnson#$michelle.johnson@mediumcompany.com
+Nitin#$#$Kumar#$#$nitin.kumar@mediumcompany.com#$Security#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Michelle Johnson#$michelle.johnson@mediumcompany.com
+Bob#$#$Argus#$#$bob.argus@mediumcompany.com#$Facilities#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Michelle Johnson#$michelle.johnson@mediumcompany.com
+Lorissa#$#$Wilder#$#$lorissa.wilder@mediumcompany.com#$Sales#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Julia Midler#$julia.midler@mediumcompany.com
+Malcom#$#$Faried#$#$malcom.faried@mediumcompany.com#$Sales#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Julia Midler#$julia.midler@mediumcompany.com
+Jim#$#$Jones#$#$jim.jones@mediumcompany.com#$Operations#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Julia Midler#$julia.midler@mediumcompany.com
+
+Jean#$#$Newcastle#$#$jean.newcastle@mediumcompany.com#$Marketing#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$JR Newberry#$jr.newberry@mediumcompany.com
+Sean#$#$Schafer#$#$sean.schafer@mediumcompany.com#$Marketing#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$JR Newberry#$jr.newberry@mediumcompany.com
+Jose#$#$Lopez#$#$jose.lopez@mediumcompany.com#$Marketing#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$JR Newberry#$jr.newberry@mediumcompany.com
+
+Jon#$#$Ramirez#$#$john.ramirez@mediumcompany.com#$R&D#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Alex Riley#$alex.riley@mediumcompany.com
+Kayla#$#$Hiler#$#$kala.hiler@mediumcompany.com#$R&D#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Alex Riley#$alex.riley@mediumcompany.com
+James#$#$Smith#$#$james.smith@mediumcompany.com#$R&D#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Alex Riley#$alex.riley@mediumcompany.com
+
+Aaron#$#$Stewart#$#$aaron.stewart@mediumcompany.com#$Network#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Erin Jankovich#$erin.jankovich@mediumcompany.com
+Tori#$#$Snyder#$#$tori.snyder@mediumcompany.com#$Data Science#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Erin Jankovich#$erin.jankovich@mediumcompany.com
+Alexander#$#$Richie#$#$alexander.richie@mediumcompany.com#$Network#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Erin Jankovich#$erin.jankovich@mediumcompany.com
+
+Sonny#$#$Alter#$#$sonny.alter@mediumcompany.com#$Security#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Nitin Kumar#$nitin.kumar@mediumcompany.com
+Laura#$#$Lawson#$#$laura.lawson@mediumcompany.com#$Security#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Nitin Kumar#$nitin.kumar@mediumcompany.com
+
+Lewis#$#$White#$#$lewis.white@mediumcompany.com#$Facilities#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Bob Argus#$bob.argus@mediumcompany.com
+Larry#$#$Dallas#$#$larry.dallas@mediumcompany.com#$Facilities#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Bob Argus#$bob.argus@mediumcompany.com
+
+Toni#$#$Sharp#$#$toni.sharp@mediumcompany.com#$Operations#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Jim Jones#$jim.jones@mediumcompany.com
+Jeff#$#$Sigler#$#$jeff.sigler@mediumcompany.com#$Operations#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Jim Jones#$jim.jones@mediumcompany.com
+
+Jerry#$#$Anderson#$#$jerry.anderson@mediumcompany.com#$AP#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Tori Snyder#$tori.snyder@mediumcompany.com
+Eric#$#$Cox#$#$eric.cox@mediumcompany.com#$Data Science#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Tori Snyder#$tori.snyder@mediumcompany.com
+
+Lexi#$#$Schroeder#$#$lexi.schroeder@mediumcompany.com#$HR#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Jacob Smith#$jacob.smith@mediumcompany.com
+
+Bobi#$#$Arons#$#$bobi.arons@mediumcompany.com#$AP#$456 Medium Place#$#$#$Miami#$Miami-Dade#$FL#$33132#$USA#$North America#$Jerry Anderson#$jerry.anderson@mediumcompany.com

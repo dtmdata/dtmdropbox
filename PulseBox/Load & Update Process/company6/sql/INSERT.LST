@@ -1,0 +1,180 @@
+
+DDL Start:  insert into industry tables..................................................................
+
+1 row created.
+
+
+
+
+DISABLE Constratins:.................................................
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+
+
+
+DDL: Insert into location table......................................
+
+2 rows created.
+
+
+
+
+DDL: Insert into company table........................................
+
+1 row created.
+
+
+
+
+Update the locations table with company_id............................
+old   1: update location  set company_id=(select company_id from company where company_name='&my_company') where company_id=1 and  city!='Sample City'
+new   1: update location  set company_id=(select company_id from company where company_name='SkiBreck') where company_id=1 and  city!='Sample City'
+
+2 rows updated.
+
+
+Commit complete.
+
+
+
+
+Update the company table with location_id.............................
+old   1: update company a  set a.location_id = (select b.location_id from location b where b.company_id=a.company_id and rownum=1) where a.company_name='&my_company'
+new   1: update company a  set a.location_id = (select b.location_id from location b where b.company_id=a.company_id and rownum=1) where a.company_name='SkiBreck'
+
+1 row updated.
+
+
+Commit complete.
+
+
+
+
+Enable the constraints................................................
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+
+
+Update Department_temp table with the compnay info...................
+old   1: update department_temp set company_name='&my_company'
+new   1: update department_temp set company_name='SkiBreck'
+
+5 rows updated.
+
+
+Commit complete.
+
+
+
+
+Update Industry_temp table with industry_id and company_id info......
+
+1 row updated.
+
+old   1: update industry_temp  set company_id=(select company_id from company where company_name='&my_company')
+new   1: update industry_temp  set company_id=(select company_id from company where company_name='SkiBreck')
+
+1 row updated.
+
+
+Commit complete.
+
+
+
+
+Insert into MM_INDUSTRY_COMPANY table...............................
+
+1 row created.
+
+
+Commit complete.
+
+
+
+
+Insert into department table........................................
+old   1: insert into department(dept_id,dept_name,dept_desc,dept_type,company_id,start_date,end_date) select dept_id_seq.nextval,a.dept_name,a.dept_desc,a.dept_type,b.company_id,sysdate,to_date('12-31-9999','mm-dd-yyyy') from department_temp a, company b where b.company_name='&my_company'
+new   1: insert into department(dept_id,dept_name,dept_desc,dept_type,company_id,start_date,end_date) select dept_id_seq.nextval,a.dept_name,a.dept_desc,a.dept_type,b.company_id,sysdate,to_date('12-31-9999','mm-dd-yyyy') from department_temp a, company b where b.company_name='SkiBreck'
+
+5 rows created.
+
+
+Commit complete.
+
+
+
+
+Update the emp_temp table with company_id, location_id, dept_id.......
+old   1: update emp_temp a set a.company_id = (select b.company_id from company b where b.company_name='&my_company')
+new   1: update emp_temp a set a.company_id = (select b.company_id from company b where b.company_name='SkiBreck')
+
+28 rows updated.
+
+old   3: and b.company_id=(select company_id from company where company_name='&my_company'))
+new   3: and b.company_id=(select company_id from company where company_name='SkiBreck'))
+
+28 rows updated.
+
+
+Commit complete.
+
+old   1: update emp_temp a set a.dept_id=(select b.dept_id from department b where a.dept_name=b.dept_name and b.company_id=(select company_id from company where company_name='&my_company'))
+new   1: update emp_temp a set a.dept_id=(select b.dept_id from department b where a.dept_name=b.dept_name and b.company_id=(select company_id from company where company_name='SkiBreck'))
+
+28 rows updated.
+
+
+28 rows updated.
+
+
+Commit complete.
+
+
+
+
+Insert into the employee table...................................
+
+28 rows created.
+
+
+Commit complete.
+
+
+
+
+Update the employee table with managerid and manger yn ............
+old   2: where company_id= (select company_id from company where company_name='&my_company')
+new   2: where company_id= (select company_id from company where company_name='SkiBreck')
+
+28 rows updated.
+
+
+40 rows updated.
+
+
+Commit complete.
+
+
+

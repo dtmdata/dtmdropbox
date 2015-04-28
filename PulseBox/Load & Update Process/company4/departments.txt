@@ -1,0 +1,7 @@
+IT#$Information Technology#$IT#$
+Marketing#$Marketing Department#$Marketing#$
+HR#$Human Resources#$HR#$                                                      
+Operations#$Company Operations#$Operations#$
+Sales#$Sales Department#$Sales#$
+R&D#$Research & Dev#$R&D#$                                      
+

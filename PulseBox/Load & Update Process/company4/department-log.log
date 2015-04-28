@@ -1,0 +1,54 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on Tue Feb 24 11:40:25 2015
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   department-load.ctl
+Data File:      C:\Users\sirikonda.naveen\load files\company4\departments.txt
+  Bad File:     C:\Users\sirikonda.naveen\load files\company4\bad_departments_records.txt
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table DEPARTMENT_TEMP, loaded from every logical record.
+Insert option in effect for this table: TRUNCATE
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+DEPT_NAME                           FIRST     *           CHARACTER            
+    Terminator string : '#$'
+DEPT_DESC                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+DEPT_TYPE                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+
+Record 7: Discarded - all columns null.
+
+Table DEPARTMENT_TEMP:
+  6 Rows successfully loaded.
+  0 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  1 Row not loaded because all fields were null.
+
+
+Space allocated for bind array:                  49536 bytes(64 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:             7
+Total logical records rejected:         0
+Total logical records discarded:        1
+
+Run began on Tue Feb 24 11:40:25 2015
+Run ended on Tue Feb 24 11:40:26 2015
+
+Elapsed time was:     00:00:00.97
+CPU time was:         00:00:00.06

@@ -1,0 +1,83 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on Thu Feb 5 13:54:00 2015
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   C:\Users\sirikonda.naveen\load files\emp-load.ctl
+Data File:      C:\Users\sirikonda.naveen\load files\employees.txt
+  Bad File:     C:\Users\sirikonda.naveen\load files\employees.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table EMP_TEMP, loaded from every logical record.
+Insert option in effect for this table: INSERT
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+EMP_FIRST_NAME                      FIRST     *           CHARACTER            
+    Terminator string : '#$'
+EMP_MIDDLE_NAME                      NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_LAST_NAME                        NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_GENDER                           NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_EMAIL                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_DEPT                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_ADDRESS1                         NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_ADDRESS2                         NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_ADDRESS3                         NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_CITY                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_COUNTY                           NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_STATE                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_ZIP                              NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_COUNTRY                          NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_CONTINENT                        NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_MANAGER                          NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMP_MANAGER_EMAIL                    NEXT     *           CHARACTER            
+    Terminator string : '#$'
+
+value used for ROWS parameter changed from 64 to 58
+Record 8: Rejected - Error on table EMP_TEMP, column EMP_MIDDLE_NAME.
+Column not found before end of logical record (use TRAILING NULLCOLS)
+
+Table EMP_TEMP:
+  7 Rows successfully loaded.
+  1 Row not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                 254388 bytes(58 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:             8
+Total logical records rejected:         1
+Total logical records discarded:        0
+
+Run began on Thu Feb 05 13:54:00 2015
+Run ended on Thu Feb 05 13:54:22 2015
+
+Elapsed time was:     00:00:22.08
+CPU time was:         00:00:00.06

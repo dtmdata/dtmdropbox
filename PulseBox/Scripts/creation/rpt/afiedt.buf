@@ -1,0 +1,25 @@
+select
+  B.industry_id, B.industry_name, A.company_id, A.company_name
+from
+( select
+    MM.industry_id as industry_id, I1.INDUSTRY_NAME as industry_name, MM.company_id as company_id, C.company_name as company_name
+  from
+    MM_INDUSTRY_COMPANY  MM,
+    industry I1,
+    company C
+  where
+    1=1
+    and MM.industry_id = I1.INDUSTRY_ID
+    and MM.COMPANY_ID  = C.COMPANY_ID
+    and MM.company_id  = 3000    --v_IN_company_id  --3000
+) A,
+(select
+  I2.industry_id as industry_id, I2.INDUSTRY_NAME as industry_name, null, null
+from
+  industry I2
+) B
+where
+  A.industry_id(+) = B.industry_id
+order by  B.industry_name, A.company_name
+
+/

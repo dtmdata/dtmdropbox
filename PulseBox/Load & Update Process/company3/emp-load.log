@@ -1,0 +1,88 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on Tue Mar 3 10:07:41 2015
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   C:\Users\sirikonda.naveen\load files\company3\emp-load.ctl
+Data File:      C:\Users\sirikonda.naveen\load files\company3\employees.txt
+  Bad File:     C:\Users\sirikonda.naveen\load files\company3\bad_employees_records.txt
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table EMP_TEMP, loaded from every logical record.
+Insert option in effect for this table: TRUNCATE
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+FIRST_NAME                          FIRST     *           CHARACTER            
+    Terminator string : '#$'
+MIDDLE_NAME                          NEXT     *           CHARACTER            
+    Terminator string : '#$'
+LAST_NAME                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+GENDER                               NEXT     *           CHARACTER            
+    Terminator string : '#$'
+EMAIL_ADDR                           NEXT     *           CHARACTER            
+    Terminator string : '#$'
+DEPT_NAME                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+ADDRESS1                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+ADDRESS2                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+ADDRESS3                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+CITY                                 NEXT     *           CHARACTER            
+    Terminator string : '#$'
+COUNTY                               NEXT     *           CHARACTER            
+    Terminator string : '#$'
+STATE                                NEXT     *           CHARACTER            
+    Terminator string : '#$'
+POSTAL_CODE                          NEXT     *           CHARACTER            
+    Terminator string : '#$'
+COUNTRY                              NEXT     *           CHARACTER            
+    Terminator string : '#$'
+CONTINENT                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+MANAGER                              NEXT     *           CHARACTER            
+    Terminator string : '#$'
+MGR_EMAIL_ADDR                       NEXT     *           CHARACTER            
+    Terminator string : '#$'
+
+value used for ROWS parameter changed from 64 to 58
+Record 6: Rejected - Error on table EMP_TEMP, column FIRST_NAME.
+ORA-12899: value too large for column "DTM_DEV"."EMP_TEMP"."FIRST_NAME" (actual: 49, maximum: 30)
+
+Record 7: Rejected - Error on table EMP_TEMP, column FIRST_NAME.
+ORA-12899: value too large for column "DTM_DEV"."EMP_TEMP"."FIRST_NAME" (actual: 50, maximum: 30)
+
+
+Table EMP_TEMP:
+  5 Rows successfully loaded.
+  2 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                 254388 bytes(58 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:             7
+Total logical records rejected:         2
+Total logical records discarded:        0
+
+Run began on Tue Mar 03 10:07:41 2015
+Run ended on Tue Mar 03 10:08:02 2015
+
+Elapsed time was:     00:00:20.52
+CPU time was:         00:00:00.11

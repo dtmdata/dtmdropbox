@@ -1,0 +1,104 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on Thu Apr 2 17:34:48 2015
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   updates-load.ctl
+Data File:      C:\Users\sirikonda.naveen\load files\company6\updates.txt
+  Bad File:     C:\Users\sirikonda.naveen\load files\company6\bad_updates.txt
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table EMP_UPDATE_TEMP, loaded from every logical record.
+Insert option in effect for this table: TRUNCATE
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+SURNAME_NAME                        FIRST     *           CHARACTER            
+    Terminator string : '#$'
+FIRST_NAME                           NEXT     *           CHARACTER            
+    Terminator string : '#$'
+MIDDLE_NAME                          NEXT     *           CHARACTER            
+    Terminator string : '#$'
+LAST_NAME                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+PEDIGREE                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+DEGREE                               NEXT     *           CHARACTER            
+    Terminator string : '#$'
+GENDER                               NEXT     *           CHARACTER            
+    Terminator string : '#$'
+OLD_EMAIL_ADDR                       NEXT     *           CHARACTER            
+    Terminator string : '#$'
+NEW_EMAIL_ADDR                       NEXT     *           CHARACTER            
+    Terminator string : '#$'
+PHONE_NUMBER                         NEXT     *           CHARACTER            
+    Terminator string : '#$'
+DEPT_NAME                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+ADDRESS1                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+ADDRESS2                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+ADDRESS3                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+CITY                                 NEXT     *           CHARACTER            
+    Terminator string : '#$'
+COUNTY                               NEXT     *           CHARACTER            
+    Terminator string : '#$'
+STATE                                NEXT     *           CHARACTER            
+    Terminator string : '#$'
+POSTAL_CODE                          NEXT     *           CHARACTER            
+    Terminator string : '#$'
+COUNTRY                              NEXT     *           CHARACTER            
+    Terminator string : '#$'
+CONTINENT                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+MANAGER                              NEXT     *           CHARACTER            
+    Terminator string : '#$'
+MGR_EMAIL_ADDR                       NEXT     *           CHARACTER            
+    Terminator string : '#$'
+COMMENTS                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+TASK_TYPE                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+LOADED                               NEXT     *           CHARACTER            
+    Terminator string : '#$'
+
+value used for ROWS parameter changed from 64 to 39
+Record 3: Rejected - Error on table EMP_UPDATE_TEMP, column SURNAME_NAME.
+ORA-12899: value too large for column "DTM_DEV"."EMP_UPDATE_TEMP"."SURNAME_NAME" (actual: 52, maximum: 30)
+
+Record 4: Rejected - Error on table EMP_UPDATE_TEMP, column SURNAME_NAME.
+ORA-12899: value too large for column "DTM_DEV"."EMP_UPDATE_TEMP"."SURNAME_NAME" (actual: 52, maximum: 30)
+
+
+Table EMP_UPDATE_TEMP:
+  2 Rows successfully loaded.
+  2 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                 251550 bytes(39 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:             4
+Total logical records rejected:         2
+Total logical records discarded:        0
+
+Run began on Thu Apr 02 17:34:48 2015
+Run ended on Thu Apr 02 17:34:51 2015
+
+Elapsed time was:     00:00:02.93
+CPU time was:         00:00:00.12

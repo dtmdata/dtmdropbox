@@ -1,0 +1,91 @@
+
+DDL: Update the emp_update_temp table....
+old   1: update emp_update_temp a set a.dept_id=(select b.dept_id from department b where a.dept_name=b.dept_name and b.dept_name is not null and  b.company_id=(select company_id from company where company_name='&my_company'))
+new   1: update emp_update_temp a set a.dept_id=(select b.dept_id from department b where a.dept_name=b.dept_name and b.dept_name is not null and  b.company_id=(select company_id from company where company_name='SkiBreck'))
+
+2 rows updated.
+
+old   2: and a.postal_code=b.postal_code and a.country=b.country and a.address1 is not null and a.city is not null and a.state is not null and a.postal_code is not null and b.company_id=(select company_id from company where company_name='&my_company'))
+new   2: and a.postal_code=b.postal_code and a.country=b.country and a.address1 is not null and a.city is not null and a.state is not null and a.postal_code is not null and b.company_id=(select company_id from company where company_name='SkiBreck'))
+
+2 rows updated.
+
+
+2 rows updated.
+
+
+2 rows updated.
+
+
+Commit complete.
+
+
+
+
+DDL: Mark the records deleted in the employee table.................................................
+
+0 rows updated.
+
+
+0 rows updated.
+
+
+Commit complete.
+
+
+
+
+DDL:Update the records in the employee table
+
+0 rows updated.
+
+
+2 rows updated.
+
+
+2 rows updated.
+
+
+2 rows updated.
+
+
+0 rows updated.
+
+
+0 rows updated.
+
+
+1 row updated.
+
+
+2 rows updated.
+
+
+0 rows updated.
+
+
+2 rows updated.
+
+
+2 rows updated.
+
+
+1 row updated.
+
+
+0 rows updated.
+
+
+41 rows updated.
+
+
+Commit complete.
+
+
+2 rows updated.
+
+
+Commit complete.
+
+
+

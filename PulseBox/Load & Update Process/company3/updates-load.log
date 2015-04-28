@@ -1,0 +1,100 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on Fri Mar 13 10:58:31 2015
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   C:\Users\sirikonda.naveen\load files\company3\updates-load.ctl
+Data File:      C:\Users\sirikonda.naveen\load files\company3\updates_emp.txt
+  Bad File:     C:\Users\sirikonda.naveen\load files\company3\bad_updates_emp.txt
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table EMP_UPDATE_TEMP, loaded from every logical record.
+Insert option in effect for this table: TRUNCATE
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+SURNAME_NAME                        FIRST     *           CHARACTER            
+    Terminator string : '#$'
+FIRST_NAME                           NEXT     *           CHARACTER            
+    Terminator string : '#$'
+MIDDLE_NAME                          NEXT     *           CHARACTER            
+    Terminator string : '#$'
+LAST_NAME                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+PEDIGREE                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+DEGREE                               NEXT     *           CHARACTER            
+    Terminator string : '#$'
+GENDER                               NEXT     *           CHARACTER            
+    Terminator string : '#$'
+OLD_EMAIL_ADDR                       NEXT     *           CHARACTER            
+    Terminator string : '#$'
+NEW_EMAIL_ADDR                       NEXT     *           CHARACTER            
+    Terminator string : '#$'
+PHONE_NUMBER                         NEXT     *           CHARACTER            
+    Terminator string : '#$'
+DEPT_NAME                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+ADDRESS1                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+ADDRESS2                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+ADDRESS3                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+CITY                                 NEXT     *           CHARACTER            
+    Terminator string : '#$'
+COUNTY                               NEXT     *           CHARACTER            
+    Terminator string : '#$'
+STATE                                NEXT     *           CHARACTER            
+    Terminator string : '#$'
+POSTAL_CODE                          NEXT     *           CHARACTER            
+    Terminator string : '#$'
+COUNTRY                              NEXT     *           CHARACTER            
+    Terminator string : '#$'
+CONTINENT                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+MANAGER                              NEXT     *           CHARACTER            
+    Terminator string : '#$'
+MGR_EMAIL_ADDR                       NEXT     *           CHARACTER            
+    Terminator string : '#$'
+COMMENTS                             NEXT     *           CHARACTER            
+    Terminator string : '#$'
+TASK_TYPE                            NEXT     *           CHARACTER            
+    Terminator string : '#$'
+LOADED                               NEXT     *           CHARACTER            
+    Terminator string : '#$'
+
+value used for ROWS parameter changed from 64 to 39
+Record 2: Discarded - all columns null.
+Record 3: Discarded - all columns null.
+
+Table EMP_UPDATE_TEMP:
+  1 Row successfully loaded.
+  0 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  2 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                 251550 bytes(39 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:             3
+Total logical records rejected:         0
+Total logical records discarded:        2
+
+Run began on Fri Mar 13 10:58:31 2015
+Run ended on Fri Mar 13 10:58:49 2015
+
+Elapsed time was:     00:00:17.22
+CPU time was:         00:00:00.10

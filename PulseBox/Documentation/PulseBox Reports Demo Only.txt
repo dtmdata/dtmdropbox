@@ -1,0 +1,21 @@
+PulseBox Reports for Demo (for all reports privileges must be verified beforehand for user in question)
+
+1) Team Pulse (now and history).   "Team" may be entire company, department by name, or everyone under a specific person/lead.  
+
+2) Comparison Pulse Report.   Compare two departments or two locations or two different leads.  "Leads" meaning person who has directs.
+  
+3) Participation Report.  For entire company, department by name, or everyone under a specific person/lead.
+
+4) Display Company Events.  May make this department specific later on if we want...
+
+5) Attrition Report.  For entire company, or department by name, or everyone under specific person/lead.  Display % of team members in danger of leaving.
+
+6) Show feedback/pulse for specific question (within company, department).  If #1 above has flexibilities built in then that should take care of this.
+
+7) Industry Pulse Comparison Report.   Compare current company to industry or other industries (super user only).
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+REM C:\Users\durland.dave\Downloads\XE.test.data\ofc
+cd C:\Users\Dave\Desktop\DTMData\01.PulseBox\scripts\cr\home
+
+
+REM run all the create/alter/insert scripts:
+sqlplus xe/xe @runall.sql
+
+
+

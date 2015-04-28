@@ -1,0 +1,5 @@
+load data
+infile 'C:\Users\sirikonda.naveen\load files\departments.txt'
+into table department_temp
+fields terminated by ","
+(dept_name, dept_desc, dept_type)

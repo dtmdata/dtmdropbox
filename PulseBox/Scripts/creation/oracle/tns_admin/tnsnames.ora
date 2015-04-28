@@ -1,0 +1,46 @@
+### DD home PC:
+XE =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = dd-x205)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = XE)
+    )
+  )
+
+
+### AWS/g.daddy info:  dtm / Level32014
+DTM =
+  (DESCRIPTION =
+     (ADDRESS_LIST =
+        (ADDRESS = (PROTOCOL = TCP)(HOST = dtmdata.cdywmypibeq1.us-west-2.rds.amazonaws.com)(PORT = 1521))
+   )
+    (CONNECT_DATA =
+      (SID = DTMDATA)
+      (SERVER = DEDICATED)      
+    )
+  )
+
+
+
+EXTPROC_CONNECTION_DATA =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1))
+    )
+    (CONNECT_DATA =
+      (SID = PLSExtProc)
+      (PRESENTATION = RO)
+    )
+  )
+
+ORACLR_CONNECTION_DATA = 
+  (DESCRIPTION = 
+    (ADDRESS_LIST = 
+      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC1)) 
+    ) 
+    (CONNECT_DATA = 
+      (SID = CLRExtProc) 
+      (PRESENTATION = RO) 
+    ) 
+  ) 

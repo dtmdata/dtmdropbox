@@ -1,0 +1,2 @@
+
+insert into industry(industry_id, industry_name, industry_desc, start_date, end_date) select industry_id_seq.nextval, industry_name, industry_desc, sysdate, to_date('12-31-9999','mm-dd-yyyy') from industry_temp;

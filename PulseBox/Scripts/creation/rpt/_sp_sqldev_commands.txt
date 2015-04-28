@@ -1,0 +1,103 @@
+
+
+SQL> 
+@C:\Users\durland.dave\Downloads\XE.test.data\ofc\rpt\sp_pulse_company.sql
+
+variable rc refcursor;
+exec sp_pulse_company(3000, :rc );
+print rc;
+
+SQL> 
+variable rc refcursor;
+exec sp_pulse_pct_participation(3000, :rc );
+print rc;
+
+
+
+/*
+SQLDev/sql worksheet commands:
+variable rc Refcursor;
+exec sp_pulse_company_alex(300, :rc );
+print rc;
+*/
+
+/* TO TEST IT:  dos/sqlplus command line looks like this */
+SQL> 
+set lines 1000
+set pages 1000
+variable rc refcursor;
+exec sp_pulse_company(3000, :rc );
+print rc;
+
+COMPANY_ID ANS_DT        COUNT        AVG        MIN        MAX     STDDEV   VARIANCE
+---------- -------- ---------- ---------- ---------- ---------- ---------- ----------
+      3000 20120704          1          2          2          2          0          0
+      3000 20120708          1          9          9          9          0          0
+      3000 20120709          1          2          2          2          0          0
+      3000 20120710          1          2          2          2          0          0
+      3000 20120711          1          1          1          1          0          0
+      3000 20120712          1          2          2          2          0          0
+      3000 20120713          1          6          6          6          0          0
+      3000 20120714          1          8          8          8          0          0
+      3000 20120715          1          9          9          9          0          0
+      3000 20120716          1          2          2          2          0          0
+      3000 20120717          1          2          2          2          0          0
+      3000 20120718          1          2          2          2          0          0
+      3000 20120719          1          2          2          2          0          0
+      3000 20120720          1          2          2          2          0          0
+      3000 20120721          1          9          9          9          0          0
+      3000 20120722          4        8.5          5         10       2.38       5.67
+      3000 20120723          1          4          4          4          0          0
+      3000 20120724          1          2          2          2          0          0
+      3000 20120725          1          3          3          3          0          0
+      3000 20120726          1          2          2          2          0          0
+      3000 20120727          1          2          2          2          0          0
+      3000 20130321          1          8          8          8          0          0
+      3000 20130509          1         10         10         10          0          0
+      3000 20140203          1          1          1          1          0          0
+      3000 20141024          1          3          3          3          0          0
+      3000 20141026          1          7          7          7          0          0
+      3000 20141028          1          9          9          9          0          0
+      3000 20141031          1          7          7          7          0          0
+
+28 rows selected.
+
+
+==> Stored Proc above looks like:
+/********************************************************************************************************************************* 
+Displays historical Company pulse for a given Company's company_id                                            
+Based on A.Ebadi original test script; if any problems here, pls direct your complaints towards him, not me.  ;)  
+D.Durland 20141205 
+Some refs to check: 
+  http://www.akadia.com/services/ora_return_result_set.html 
+  http://stackoverflow.com/questions/1305214/c-sharp-return-resultset-from-oracle-store-procedure-and-fill-a-datatable
+
+**********************************************************************************************************************************/
+
+CREATE or REPLACE procedure SP_PULSE_COMPANY (in_company_id  	IN  number,
+			                      p_recordset 	OUT SYS_REFCURSOR) 
+AS 
+
+BEGIN
+  OPEN p_recordset For
+     SELECT
+	   E.company_id 			as COMPANY_ID,
+	   to_char(A.answer_date,'YYYYMMDD') 	as 	ANS_DT, 
+	   count(*) 				as COUNT, 
+	   round(avg(A.answer_rating),2) 	as AVG, 
+	   min(A.answer_rating) 		as MIN, 
+	   max(A.answer_rating) 		as MAX, 
+	   round(stddev(A.answer_rating),2) 	as STDDEV, 
+	   round(variance(A.answer_rating),2) 	as VARIANCE
+      FROM 
+         Answer   A,
+         Employee E
+      WHERE
+          A.emp_id = E.emp_id 
+          And Company_Id = In_Company_Id
+      GROUP BY 
+        E.company_id, to_char(A.answer_date,'YYYYMMDD')
+      ORDER BY ANS_DT;
+   
+END SP_PULSE_COMPANY;
+/

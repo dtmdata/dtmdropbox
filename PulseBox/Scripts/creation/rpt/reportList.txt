@@ -1,0 +1,133 @@
+
+======> NEW LIST AS OF 20150127 <===============
+
+
+1) Team Pulse (now and history).   "Team" may be entire Company, a Dept, or a group of Depts.
+x sp_pulse_company(IN_company_id, IN_start_date_range, IN_end_date_range)
+x sp_pulse_depts(IN_company_id, IN_emp_id, IN_start_date_range, IN_end_date_range)
+
+
+2) Comparison Pulse Report.   
+x Compare two departments(call sp_pulse_depts twice, or once for each dept_id they wish to compare). 
+	--call sp_GetDeptsSubordToEmpID() to present user with Dept list to choose from, build comma-sep id list, 
+	then pass list into sp_pulse_depts()
+x Compare two Locations (call sp_pulse_locations twice)
+	--call sp_GetLocsSubordToEmpID() to present user with Location list to choose from, build comma-sep id list, 
+	then pass list into sp_pulse_locations()
+  
+
+3) Participation Report.  
+x For entire Company or a Department: 
+   --What % are answering at least one question on a given day?
+   --display Depts subordinate to the User(emp_id) i.e. call sp_GetDeptsSubordToEmpID()
+   --User clicks Depts he wants included; app builds comma-sep list.
+   --comma-sep list gets sent to sp_pulse_pct_participation()
+   --rc returned to app for display, i.e. % vs Date
+
+
+x 4) Display Company Events.  For entire company or a department. 
+Events to include are:
+	All Public events for the Company
+	  +
+	All Private events for Dept "X"(chosen by User, via GUI), for the Company
+
+
+
+x 5) Attrition Report.  For entire company or department.  
+Display % of team members in danger of leaving... 
+This is based on which Question(s)??,  Question_Category='attrition'.
+
+
+
+x6) Industry Pulse Comparison Report.   
+Compare current company pulse (sp_pulse_company) with pulse from it's industry (sp_pulse_industry), 
+or other industries (super user only).   Obviously, can only display to user the industries for 
+companies who have been entering data into Pulsebox.
+
+
+
+
+======> NEW LIST AS OF 20150119 <===============
+
+
+1) Team Pulse (now and history).   "Team" may be entire company or a department.
+sp_pulse_company(IN_company_id, IN_start_date_range, IN_end_date_range)
+sp_pulse_depts(IN_company_id, IN_emp_id, IN_start_date_range, IN_end_date_range)
+
+
+2) Comparison Pulse Report.   Compare two departments or two locations.
+
+  
+3) Participation Report.  For entire company or a department. What % are answering at least one question.
+
+4) Display Company Events.  For entire company or a department.
+
+5) Attrition Report.  For entire company or department.  Display % of team members in danger of leaving..
+
+6) Industry Pulse Comparison Report.   Compare current company to industry or other industries (super user only).
+
+
+
+
+
+======> OLD ORIG LIST <===============
+1) DONE:  Overall company pulse. 
+a) rpt_pulse_company.sql
+	result:  get nice graph to display.  
+	--just connect dots where there ARE Answers (rather than implying some "avg" answer value in between missing answers for a given date)  
+	--TO-DO: what if multiple answers within the day?
+	--LATER: hourly? minute to minute , real-time?  drill down....
+
+b) rpt_pulse_company_event.sql
+	This was done to show Answers for each Emp, per day, per Company
+	KEEP, but don't use for now.
+
+
+
+2) NOT DONE:  rpt_pulse_pct_participation.sql
+% of employees participating for company. 
+Should be easy report joining Answer table and Employee table. 
+(multiple SQLs in this file)
+Want result to be easily understandable, maintainable, and simply re-runnable to pickup missing or changed data.
+Need pl/sql for better solution??
+NOT EASY.  
+
+
+
+3) Departmental pulse *comparison* report (compared to #1a pulse for entire company)  
+(This only applies to Premium, since with LITE the Dept pulse *IS* same result as the company pulse)
+Again, with little more data in our tables this should be pretty easy to come up with.  
+You should be able to pick two different departments in Facebook and run report for it.
+--run variant of #1 and filter by DeptIDs (let user select check boxes or multi-select lists to determine which Dept_IDs to filter by).
+
+
+4) NEEDS VALIDATION/TESTING:   rpt_pulse_depts.sql
+Possible attrition report ??  
+
+--Do this "per Question".  Parameterize??  Histogram and "Avg" value pointed out on top of Hist chart??
+--Maybe, it's just a simple report that shows a Department or a Company with high number of negative answers, and 
+we tag that as possible upcoming attrition issue for the company?  
+--Or maybe even better, it's low answers to an attrition-related question 
+(e.g. #9? from orig .PPT...."How likely are you to leave the company after the bonus payout in 2 weeks (1-10)?") 
+
+
+
+5) DONE: (DD)  rpt_show_company_events.sql
+Just a dump of the Company's events from EVENT table.
+Use as an overlay for comparison with other reports.
+
+
+6) DONE:  rpt_pulse_with_company_events.sql
+Lastly, I would have a simple report that displays pulse, and shows 3-4 events also on same graph/report.  
+This could be called the Major Event Pulse Report or something.  
+The point of this would be to attempt to tie/correlate major company (even geo or industry?) events such as hiring of new CIO to company pulse!  
+--run this one (#6) as-is and input Company_ID (need to re-write this so only get prompted 1x for Company_ID. 
+Need plsql ?
+--Another solution would be to just run #1(rpt_pulse_company.sql) and overlay #5(rpt_show_company_events.sql) on top of same chart.
+
+
+
+
+
+
+

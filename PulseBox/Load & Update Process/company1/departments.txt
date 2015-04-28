@@ -1,0 +1,4 @@
+HR#$Human Resources#$HR#$                                                      
+IT#$Information Technology#$IT#$                                               
+Sales#$Sales Department#$Sales#$                                        
+Marketing#$Marketing Department#$Marketing#$                                

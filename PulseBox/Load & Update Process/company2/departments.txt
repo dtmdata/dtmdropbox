@@ -1,0 +1,11 @@
+HR#$Human Resources#$HR#$                                                           
+IT#$Information Technology#$IT#$                                                    
+Sales#$Sales Department#$Sales#$                                                  
+Marketing#$Marketing Department#$Marketing#$                                        
+R&D#$Research & Developement#$R&D#$                                                 
+Network#$Network#$Network#$                                                         
+Security#$Coporate Security#$Security#$                                             
+Facilities#$Facilities#$Facilities#$                                                
+Operations#$Company Operations#$Operations#$                                        
+Data Science#$Data Science Dept#$Data Science#$                                     
+AP#$Accounts Payable#$AP#$

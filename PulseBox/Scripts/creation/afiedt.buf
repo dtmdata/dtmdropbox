@@ -1,0 +1,2 @@
+update employee a set a.manager_yn='Y' where (select count(1) from employee b where b.manager_id=a.emp_id) > 0
+/
