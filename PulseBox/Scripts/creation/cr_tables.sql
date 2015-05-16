@@ -1,10 +1,13 @@
 -- First, drop all our tables: 
-drop table LOCATION	            cascade constraints;
+drop table LOCATION	        cascade constraints;
 drop table QUESTION_CATEGORY 	cascade constraints;
+drop table QUESTION_TYPE	cascade constraints;
+drop table QUESTION_SOURCE 	cascade constraints;
 drop table ANSWER               cascade constraints;
 drop table EMPLOYEE             cascade constraints;
 drop table MM_INDUSTRY_COMPANY 	cascade constraints;
-drop table COMPANY 	            cascade constraints;
+drop table COMPANY 	        cascade constraints;
+drop table EVENT_CATEGORY       cascade constraints;
 drop table EVENT                cascade constraints;
 drop table PRIV                 cascade constraints;
 drop table QUESTION             cascade constraints;
@@ -99,12 +102,26 @@ create table DEPARTMENT
 comment on table DEPARTMENT is 'Reference table for tracking org structure within each Company';
 
 
+create table EVENT_CATEGORY
+(
+  category_id     	number NOT NULL,
+  company_id            number NOT NULL,
+  category_name         varchar2(30),
+  category_description  varchar2(100),
+  start_date            date NOT NULL,
+  end_date              date NOT NULL,
+  constraint event_category_pk primary key (category_id) enable, 
+  constraint event_category_uq01 unique (category_id, company_id) enable
+);
+comment on table EVENT_CATEGORY is 'Reference table describing the Category/bucket for each event';
+
+
 create table EVENT
 (
   event_id              number NOT NULL, 
   event_name 		varchar2(30) NOT NULL,
   event_desc		varchar2(200),
-  event_type            varchar2(20),    --???expound: does this determine DTM-created vs Company-created events?
+  category_id		number not null,
   event_date            date,
   company_id            number NOT NULL,
   dept_id		number not null,
@@ -125,9 +142,33 @@ create table QUESTION_CATEGORY
   category_description  varchar2(100),
   start_date            date NOT NULL,
   end_date              date NOT NULL,
-  constraint category_pk primary key (category_id) enable
+  constraint category_pk primary key (category_id) enable, 
+  constraint question_category_uq01 unique (category_id, company_id) enable
 );
 comment on table QUESTION_CATEGORY is 'Reference table describing the Category/bucket for each question';
+
+
+create table QUESTION_TYPE
+(
+  type_id      		number NOT NULL,
+  type_name    		varchar2(30),
+  type_description  	varchar2(100),
+  start_date            date NOT NULL,
+  end_date              date NOT NULL,
+  constraint question_type_pk primary key (type_id) enable
+);
+comment on table QUESTION_TYPE is 'Reference table describing the type for each question';
+
+create table QUESTION_SOURCE
+(
+  source_id      	number NOT NULL,
+  source_name  		varchar2(30),
+  source_description  	varchar2(100),
+  start_date            date NOT NULL,
+  end_date              date NOT NULL,
+  constraint question_source_pk primary key (source_id) enable
+);
+comment on table QUESTION_SOURCE is 'Reference table describing the source for each question';
 
 
 create table QUESTION
@@ -137,10 +178,11 @@ create table QUESTION
   dept_id               number NOT NULL,
   question_text         varchar2(200) NOT NULL,
   category_id           number NOT NULL,
+  type_id		number NOT NULL,
+  source_id		number NOT NULL,
   min_rating            number,
   max_rating            number,
   weight_factor		number,  -- +/- weightings -1.0 to +1.0 to help correlate pos/neg questions better.
-  custom_question       char(1),
   start_date            date NOT NULL,  --date range when this Question is relevant. If current date is outside start/end(inclusive) then "invalid question".
   end_date              date NOT NULL,  --date range when this Question is relevant. If current date is outside start/end(inclusive) then "invalid question".
   constraint question_pk primary key (question_id) enable,
@@ -189,7 +231,8 @@ create table EMPLOYEE
   comments		varchar2(200),
   start_date            date not null,
   end_date              date not null,
-  constraint employee_pk primary key (emp_id) enable
+  constraint employee_pk primary key (emp_id) enable, 
+  constraint employee_uq01 unique (emp_id, company_id, dept_id) enable
 );
 comment on table EMPLOYEE is 'Reference table for tracking Employees of Companies';
 
@@ -198,7 +241,7 @@ create table ANSWER
 (
   answer_id		number NOT NULL,
   question_id           number NOT NULL,
-  answer_text           varchar2(200),
+  answer_text           varchar2(2000),
   answer_date           date NOT NULL,
   emp_id                number NOT NULL,
   company_id		number not null,

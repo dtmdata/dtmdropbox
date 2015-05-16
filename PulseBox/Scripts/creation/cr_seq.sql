@@ -16,6 +16,16 @@ PROMPT Table => QUESTION_CATEGORY ..............................................
 DROP SEQUENCE category_id_seq;
 CREATE SEQUENCE category_id_seq MINVALUE 8000 START WITH 8000 INCREMENT BY 1 CACHE 10;
 
+PROMPT 
+PROMPT Table => QUESTION_TYPE .........................................................................
+DROP SEQUENCE question_type_id_seq;
+CREATE SEQUENCE question_type_id_seq MINVALUE 12000 START WITH 12000 INCREMENT BY 1 CACHE 10;
+
+
+PROMPT 
+PROMPT Table => QUESTION_SOURCE .........................................................................
+DROP SEQUENCE question_source_id_seq;
+CREATE SEQUENCE question_source_id_seq MINVALUE 13000 START WITH 13000 INCREMENT BY 1 CACHE 10;
 
 
 PROMPT 
@@ -42,6 +52,13 @@ PROMPT
 PROMPT Table => COMPANY .........................................................................
 DROP SEQUENCE company_id_seq;
 CREATE SEQUENCE company_id_seq MINVALUE 3000 START WITH 3000 INCREMENT BY 1 CACHE 10;
+
+
+
+PROMPT 
+PROMPT Table => EVENT_CATEGORY .........................................................................
+DROP SEQUENCE event_category_id_seq;
+CREATE SEQUENCE event_category_id_seq MINVALUE 11000 START WITH 11000 INCREMENT BY 1 CACHE 10;
 
 
 

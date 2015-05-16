@@ -21,4 +21,7 @@ alter table cOMPANY add (reporting_level number default 1 NOT NULL);
 --add col for EMPLOYEE (Alex):
 alter table EMPLOYEE add (is_used Char Default 'N' NOT NULL);
 
+--add col for ANSWER table (Axe 5/6/15)
+alter table answer add (answer_yn char(1));
+
 

@@ -1,2 +1,3 @@
-update employee a set a.manager_yn='Y' where (select count(1) from employee b where b.manager_id=a.emp_id) > 0
+insert into ANSWER values(10450, 13, 'this FREE TEXT stuff is super cool.', sysdate, 6005, 3002, 9, 5, 5, sysdate, to_date('31-DEC-99','DD-MON-YY'), 
+4007, 2002, 'N')
 /

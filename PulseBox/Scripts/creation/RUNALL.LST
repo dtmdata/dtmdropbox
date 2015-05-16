@@ -40,6 +40,33 @@ Table dropped.
 Table dropped.
 
 
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Comment created.
+
+
+Table created.
+
+
+Comment created.
+
+
+Table created.
+
+
+Comment created.
+
+
 Table created.
 
 
@@ -148,6 +175,22 @@ Sequence dropped.
 Sequence created.
 
 
+Table => QUESTION_TYPE .........................................................................
+
+Sequence dropped.
+
+
+Sequence created.
+
+
+Table => QUESTION_SOURCE .........................................................................
+
+Sequence dropped.
+
+
+Sequence created.
+
+
 Table => ANSWER .........................................................................
 
 Sequence dropped.
@@ -165,6 +208,14 @@ Sequence created.
 
 
 Table => COMPANY .........................................................................
+
+Sequence dropped.
+
+
+Sequence created.
+
+
+Table => EVENT_CATEGORY .........................................................................
 
 Sequence dropped.
 
@@ -253,6 +304,15 @@ DML start: Populate tables with default key values, and test data...............
 
 0 rows deleted.
 
+
+0 rows deleted.
+
+
+0 rows deleted.
+
+
+0 rows deleted.
+
 INSERT GENERIC/DUMMY DATA............................
 
 1 row created.
@@ -285,7 +345,58 @@ INSERT GENERIC/DUMMY DATA............................
 1 row created.
 
 
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
 Commit complete.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
 
 |===============> INSERT TEST DATA <=================================================================================|
 
@@ -455,7 +566,7 @@ COMPANY................................
 
 Commit complete.
 
-Update LOCATION table with correct company_id's................................
+Update LOCATION table with correct company_id values................................
 
 1 row updated.
 
@@ -961,7 +1072,65 @@ EMPLOYEE................................
 
 1 row created.
 
+EVENT_CATEGORY................................
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
 EVENT................................
+
+1 row created.
+
+
+1 row created.
+
 
 1 row created.
 
@@ -1095,7 +1264,249 @@ QUESTION_CATEGORY................................
 
 1 row created.
 
+QUESTION_TYPE................................
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+QUESTION_SOURCE................................
+
+1 row created.
+
+
+1 row created.
+
 QUESTION................................
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
 
 1 row created.
 
@@ -2584,6 +2995,18 @@ Table altered.
 Table altered.
 
 
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
 
 
 Special run by AXE for 2.0 upgrade; add 2 FK ID cols to ANSWER
@@ -2612,11 +3035,14 @@ Table altered.
 Table altered.
 
 
+Table altered.
+
+
 
 STORED PROCS start: Create Stored Procedures etc........................
 sp_GetCompanyEvents:
 
-Procedure created.
+Warning: Procedure created with compilation errors.
 
 sp_GetDeptsSubordToEmpID:
 

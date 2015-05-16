@@ -5,7 +5,10 @@ set scan off;
 delete from mm_industry_company;
 delete from question_category;
 delete from question;
+delete from question_type;
+delete from question_source;
 delete from event;
+delete from event_category;
 delete from priv;
 delete from employee;
 delete from department;
@@ -23,11 +26,31 @@ insert into company values (1, 'Sample Company', 1, 'Generic company to be used 
 insert into department values (1, 'Sample Department', 'Generic dept to be used temporary basis', 'Temporary', 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into priv values (1, 1, 'Sample Priv', 'Generic priv to be used temporary basis', 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into employee values (1, 'Mr.', 'Sample', 'E.', 'Employee', 'Jr', 'PhD', 'M', 'A2Z75S18', 'my_username', 1, 1, 'sample.employee@samplecompany.com', 'N/A', 1, 'N', 1, 1, 1, 'samplepassword', 'testing only', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (1, 'Sample Event', 'Generic event used temporary basis', 'Temporary', to_date('05-01-2014', 'MM-DD-YYYY'), 1, 1, 'public', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (1, 1, 'Sample Event Category', 'Generic event category used temporary basis', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (1, 'Sample Event', 'Generic event used temporary basis', 1, to_date('05-01-2014', 'MM-DD-YYYY'), 1, 1, 'public', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into question_category values (1, 1, 'Sample Question Category', 'Generic category to be used temporary basis', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (1, 1, 1, 'Sample question?', 1, 1, 10, 4, 'Y', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_source values (1, 'Sample question source', 'Generic question source to be used temporary basis', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_type values (1, 'Sample Question Type', 'Generic question type to be used temporary basis', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (1, 1, 1, 'Sample question?', 1, 1, 1, 1, 10, 4, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into answer values (1, 1, 'Sample answer', to_date('09-28-2014', 'MM-DD-YYYY'), 1, 1, 7, 5, 8, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 commit;
+
+
+--special IDs: 10 through whatever needed. This is for the hardcoded IDs that the App will be using. 
+insert into question values (10, 1, 1, 'FREE TEXT QUESTION', 1, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (11, 3000, 4000, 'FREE TEXT QUESTION', 80, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (12, 3001, 4004, 'FREE TEXT QUESTION', 81, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (13, 3002, 4007, 'FREE TEXT QUESTION', 82, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (14, 3003, 4008, 'FREE TEXT QUESTION', 83, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (15, 3004, 4009, 'FREE TEXT QUESTION', 84, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (16, 3005, 4010, 'FREE TEXT QUESTION', 85, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (17, 3006, 4011, 'FREE TEXT QUESTION', 86, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (18, 3007, 4012, 'FREE TEXT QUESTION', 87, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (19, 3008, 4013, 'FREE TEXT QUESTION', 88, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (20, 3009, 4014, 'FREE TEXT QUESTION', 89, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (21, 3010, 4015, 'FREE TEXT QUESTION', 90, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (22, 3011, 4016, 'FREE TEXT QUESTION', 91, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (23, 3012, 4017, 'FREE TEXT QUESTION', 92, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 
 PROMPT |===============> INSERT TEST DATA <=================================================================================|
@@ -196,7 +219,7 @@ insert into department values (dept_id_seq.nextval, 'Marketing'       , 'Marketi
 
 insert into department values (dept_id_seq.nextval, 'R&D'       , 'Research & Developement'           , 'R&D'           , 3005, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into department values (dept_id_seq.nextval, 'Network'       , 'Network'           , 'Network'           , 3005, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into department values (dept_id_seq.nextval, 'Security'       , 'Coporate Security'           , 'Security'           , 3005, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into department values (dept_id_seq.nextval, 'Security'       , 'Corporate Security'           , 'Security'           , 3005, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into department values (dept_id_seq.nextval, 'Facilities'       , 'Facilities'           , 'Facilities'           , 3005, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into department values (dept_id_seq.nextval, 'Operations'       , 'Company Operations'           , 'Operations'           , 3005, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into department values (dept_id_seq.nextval, 'Data Science'       , 'Data Science Dept'           , 'Data Science'           , 3005, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
@@ -309,26 +332,45 @@ insert into employee values (emp_id_seq.nextval, 'Mr'    , 'Nasir' , '' , 'Moham
 insert into employee values (emp_id_seq.nextval, 'Mr'    , 'Asif' , '' , 'Hotaki'   , '', '', '', 'ZBG79ZWW', ''           , 3012, 4017, 'asif.hotaki@dcc.com'     , '7201234567', 6078  , 'Y', 2012, 1, 5000, 'pass', 'test', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 
-
+PROMPT EVENT_CATEGORY................................
+--IDs should start at 11000 in seq definition
+insert into event_category values (event_category_id_seq.nextval, 3000, 'Corporate', 'Tracking company events related to corporate', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3000, 'Acquisiton', 'Tracking company events related to buyout of company xyz', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3001, 'Corporate', 'Tracking company events related to corporate', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3001, 'Stock Split', 'Tracking company events related to our stock split', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3002, 'Corporate', 'Tracking company events related to corporate', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3002, 'New HQ', 'Tracking company events related to new corporate headquarters', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3003, 'Corporate', 'Tracking company events related to corporate', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3004, 'Corporate', 'Tracking company events related to corporate', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3005, 'Corporate', 'Tracking company events related to corporate', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3005, 'Layoff', 'Tracking company events related to the layoff', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3005, 'Project 2020', 'Tracking company events related to our major project 2020', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3007, 'Corporate', 'Tracking company events related to corporate', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3008, 'Corporate', 'Tracking company events related to corporate', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3009, 'Corporate', 'Tracking company events related to corporate', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3010, 'Corporate', 'Tracking company events related to corporate', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3011, 'Corporate', 'Tracking company events related to corporate', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event_category values (event_category_id_seq.nextval, 3012, 'Corporate', 'Tracking company events related to corporate', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 PROMPT EVENT................................
 --IDs should start at 7000 in seq definition
-insert into event values (event_id_seq.nextval, 'Bought PB'   , 'Day FB signed agreement to purchase PB', 'Purchase'  , to_date('11-01-2014', 'MM-DD-YYYY'), 3000, 4001, 'public', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'Hired CIO'   , 'Hired new CIO'                         , 'Personnel' , to_date('08-11-2014', 'MM-DD-YYYY'), 3000, 4002, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'Fired CIO'   , 'Fired our CIO'                         , 'Personnel' , to_date('03-18-2014', 'MM-DD-YYYY'), 3000, 4003, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'Stock price' , 'Day stock first broke $50'             , 'Purchase'  , to_date('11-01-2014', 'MM-DD-YYYY'), 3001, 4005, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'Started Company' , 'First Day DTM Data was formed!'             , 'Start'  , to_date('11-23-2014', 'MM-DD-YYYY'), 3002, 4007, 'public', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-
-insert into event values (event_id_seq.nextval, 'New HR head' , 'First new HR head started.'             , 'Start'  , to_date('09-20-2014', 'MM-DD-YYYY'), 3003, 4018, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'Fired VP' , 'VP of operations gone'             , 'Start'  , to_date('03-11-2014', 'MM-DD-YYYY'), 3004, 4029, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'Sold' , 'Sold our company to company XYZ'             , 'Start'  , to_date('05-27-2014', 'MM-DD-YYYY'), 3005, 4048, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'Layoff' , 'Company layoff - impacted 23'             , 'Start'  , to_date('07-11-2014', 'MM-DD-YYYY'), 3006, 4021, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'Recognition System Overhaul' , 'Announced overhaul of our employee recognition system'             , 'Start'  , to_date('09-25-2014', 'MM-DD-YYYY'), 3007, 4022, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'New Performance Review Tool' , 'Started using new XYZ performance review tool'             , 'Start'  , to_date('02-11-2014', 'MM-DD-YYYY'), 3008, 4023, 'public', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'Reduced Bonuses' , 'Reduced bonus for entire company fromm 10% to 5%'             , 'Start'  , to_date('02-26-2014', 'MM-DD-YYYY'), 3009, 4024, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'Massive Hiring' , 'Big hiring announced due to prduct XYZ taking off'             , 'Start'  , to_date('04-11-2014', 'MM-DD-YYYY'), 3010, 4025, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'Opened Rec Center' , 'First day onsite rec center opened up'             , 'Start'  , to_date('10-07-2014', 'MM-DD-YYYY'), 3011, 4016, 'public', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into event values (event_id_seq.nextval, 'Cafeteria Food Changed' , 'Added a totally new Italian section'             , 'Start'  , to_date('12-08-2014', 'MM-DD-YYYY'), 3012, 4017, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Bought PB'   , 'Day FB signed agreement to purchase PB', 11001  , to_date('11-01-2014', 'MM-DD-YYYY'), 3000, 4001, 'public', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Hired CIO'   , 'Hired new CIO'                         , 11000 , to_date('08-11-2014', 'MM-DD-YYYY'), 3000, 4002, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Fired CIO'   , 'Fired our CIO'                         , 11000 , to_date('03-18-2014', 'MM-DD-YYYY'), 3000, 4003, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Stock price' , 'Day stock first broke $50'             , 11002  , to_date('11-01-2014', 'MM-DD-YYYY'), 3001, 4005, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Started Company' , 'First Day DTM Data was formed!'             , 11004  , to_date('11-23-2014', 'MM-DD-YYYY'), 3002, 4007, 'public', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'New HR head' , 'First new HR head started.'             , 11006  , to_date('09-20-2014', 'MM-DD-YYYY'), 3003, 4018, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Fired VP' , 'VP of operations gone'             , 11007  , to_date('03-11-2014', 'MM-DD-YYYY'), 3004, 4029, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Sold' , 'Sold our company to company XYZ'             , 11008  , to_date('05-27-2014', 'MM-DD-YYYY'), 3005, 4048, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Layoff' , 'Company layoff - impacted 23'             , 11009  , to_date('07-11-2014', 'MM-DD-YYYY'), 3005, 4048, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Project 2020 Kickoff' , 'Start of our main company project!'             , 11010  , to_date('03-11-2014', 'MM-DD-YYYY'), 3005, 4048, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Corporate Realignment' , 'Realigned 8 executives under Jones'             , 11008  , to_date('06-09-2014', 'MM-DD-YYYY'), 3005, 4048, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Recognition System Overhaul' , 'Announced overhaul of our employee recognition system', 11011, to_date('09-25-2014', 'MM-DD-YYYY'), 3007, 4022, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'New Performance Review Tool' , 'Started using new XYZ performance review tool', 11012, to_date('02-11-2014', 'MM-DD-YYYY'), 3008, 4023, 'public', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Reduced Bonuses' , 'Reduced bonus for entire company fromm 10% to 5%', 11013, to_date('02-26-2014', 'MM-DD-YYYY'), 3009, 4024, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Massive Hiring' , 'Big hiring announced due to prduct XYZ taking off', 11014, to_date('04-11-2014', 'MM-DD-YYYY'), 3010, 4025, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Opened Rec Center' , 'First day onsite rec center opened up', 11015, to_date('10-07-2014', 'MM-DD-YYYY'), 3011, 4016, 'public', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into event values (event_id_seq.nextval, 'Cafeteria Food Changed' , 'Added a totally new Italian section', 11016, to_date('12-08-2014', 'MM-DD-YYYY'), 3012, 4017, 'private', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 
 PROMPT QUESTION_CATEGORY................................
@@ -365,102 +407,204 @@ insert into question_category values (category_id_seq.nextval, 3010, 'Attrition'
 insert into question_category values (category_id_seq.nextval, 3011, 'Attrition' , 'Team attrition/retention' , sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into question_category values (category_id_seq.nextval, 3012, 'Attrition' , 'Team attrition/retention' , sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
+PROMPT QUESTION_TYPE................................
+--IDs should start at 12000 in seq definition
+insert into question_type values (question_type_id_seq.nextval, 'YN', 'Yes/No question', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_type values (question_type_id_seq.nextval, 'Free Text', 'Free text answers attached to these questions', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_type values (question_type_id_seq.nextval, 'Rating', 'Question that requires rating in answer', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
+PROMPT QUESTION_SOURCE................................
+--IDs should start at 13000 in seq definition
+insert into question_source values (question_source_id_seq.nextval, 'Standard', 'Standard question provided by DTM Data', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_source values (question_source_id_seq.nextval, 'Custom', 'Custom question created by customer', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 PROMPT QUESTION................................
 --IDs should start at 9000 in seq definition
 --start of sample online company questions:
-insert into question values (question_id_seq.nextval, 3000, 4001, 'WHAT FREE TEXT WOULD YOU LIKE TO ENTER?' , 8016, 1, 10, 2, 'N', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3000, 4001, 'How likely are you to leave the company after the upcoming bonus payout?' , 8016, 1, 10, 2, 'N', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3000, 4000, 'How is life at your Company today?'                                       , 8001, 1, 10, 3, 'Y', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3000, 4002, 'Rate your happiness at your company?'                                         , 8016, 1, 10, 6, 'N', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3000, 4001, 'How is the food at the cafeteria?'                                        , 8002, 1, 10, 1, 'Y', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3000, 4001, 'How is your workplace environment?'                                       , 8003, 1, 10, 1, 'Y', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4001, 'How likely are you to leave the company after the upcoming bonus payout?' , 8016, 12002, 13001, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4000, 'How is life at your Company today?'                                       , 8001, 12002, 13001, 1, 10, 3, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4002, 'Rate your happiness at your company?'                                         , 8016, 12002, 13001, 1, 10, 6, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4001, 'How is the food at the cafeteria?'                                        , 8002, 12002, 13001, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4001, 'How is your workplace environment?'                                       , 8003, 12002, 13001, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 --start of dtmdata questions
-insert into question values (question_id_seq.nextval, 3002, 4001, 'WHAT FREE TEXT WOULD YOU LIKE TO ENTER?' , 8016, 1, 10, 2, 'N', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3002, 4007, 'How is team doing in your opinion?'                                       , 8018, 1, 10, 6, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3002, 4007, 'Any major suggestions you have to make things better now?'                                       , 8018, 1, 10, 8, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3002, 4007, 'What is your confidence level in our future success?'                                       , 8005, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3002, 4007, 'How do you feel about the # of hours you are putting in?'                                       , 8005, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3002, 4007, 'Rate the impact of John Smith being let go?'                                       , 8005, 1, 10, 4, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3002, 4007, 'What do you feel is the next important milestone for our company?'                                       , 8005, 1, 10, 3, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3002, 4007, 'Do you feel weekly team meeting is good?'                                       , 8005, 1, 10, 5, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3002, 4007, 'Do you think we should pursue VC or do Bootstrap?'                                       , 8005, 1, 10, 4, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3002, 4007, 'What is your rating of the CEO?'                                       , 8005, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3002, 4007, 'List one thing that you would recommend to make things more efficient?'                                       , 8005, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'How is team doing in your opinion?'                                       , 8018, 12002, 13001, 1, 10, 6, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'Any major suggestions you have to make things better now?'                                       , 8018, 12002, 13001, 1, 10, 8, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'What is your confidence level in our future success?'                                       , 8005, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'How do you feel about the # of hours you are putting in?'                                       , 8005, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'Rate the impact of John Smith being let go?'                                       , 8005, 12002, 13001, 1, 10, 4, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'What do you feel is the next important milestone for our company?'                                       , 8005, 12002, 13001, 1, 10, 3, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'Do you feel weekly team meeting is good?'                                       , 8005, 12002, 13001, 1, 10, 5, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'Do you think we should pursue VC or do Bootstrap?'                                       , 8005, 12002, 13001, 1, 10, 4, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'What is your rating of the CEO?'                                       , 8005, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'List one thing that you would recommend to make things more efficient?', 8005, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 --start of tinycompany questions
-insert into question values (question_id_seq.nextval, 3003, 4008, 'How are things?'                                       , 8019, 1, 10, 6, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3003, 4018, 'Do you have any suggestions for improvment?'                                       , 8006, 1, 10, 8, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3003, 4028, 'Rate your future with our company?'                                       , 8019, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3003, 4038, 'You feel overworked?'                                       , 8019, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3003, 4008, 'Rate the impact of Charlie Stewart being let go?'                                       , 8006, 1, 10, 4, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3003, 4018, 'What is the biggest upcoming goal for the company?'                                       , 8006, 1, 10, 3, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3003, 4028, 'Do you feel a monthly All Hands meeting is enough?'                                       , 8006, 1, 10, 5, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3003, 4038, 'What do you think the best thing to wo with company now?'                                       , 8006, 1, 10, 4, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3003, 4008, 'What is your rating of the CTO?'                                       , 8006, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3003, 4018, 'List your #1 efficiency idea for our company?'                                       , 8006, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4008, 'How are things?'                                       , 8019, 12002, 13001, 1, 10, 6, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4018, 'Do you have any suggestions for improvment?'                                       , 8006, 12002, 13001, 1, 10, 8, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4028, 'Rate your future with our company?'                                       , 8019, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4038, 'You feel overworked?'                                       , 8019, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4008, 'Rate the impact of Charlie Stewart being let go?'                                       , 8006, 12002, 13001, 1, 10, 4, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4018, 'What is the biggest upcoming goal for the company?'                                       , 8006, 12002, 13001, 1, 10, 3, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4028, 'Do you feel a monthly All Hands meeting is enough?'                                       , 8006, 12002, 13001, 1, 10, 5, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4038, 'What do you think the best thing to wo with company now?'                                       , 8006, 12002, 13001, 1, 10, 4, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4008, 'What is your rating of the CTO?'                                       , 8006, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4018, 'List your #1 efficiency idea for our company?'                                       , 8006, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 --start of smallcompany questions
-insert into question values (question_id_seq.nextval, 3004, 4009, 'How are things in your immediate team?'                                       , 8007, 1, 10, 6, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3004, 4019, 'Any suggestions right now?'                                       , 8007, 1, 10, 8, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3004, 4029, 'How confident are you about our future?'                                       , 8020, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3004, 4039, 'How is your work/life balance right now?'                                       , 8020, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3004, 4009, 'Rate the impact of Michelle Jones being let go?'                                       , 8007, 1, 10, 4, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3004, 4019, 'What do you feel is the next important goal for our company?'                                       , 8007, 1, 10, 3, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3004, 4029, 'Do you feel monthly team meeting is good?'                                       , 8007, 1, 10, 5, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3004, 4039, 'Best thing to do with company going forward?'                                       , 8007, 1, 10, 4, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3004, 4009, 'What is your rating of your VP?'                                       , 8007, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3004, 4019, 'How do you make your department more efficient?'                                       , 8007, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4009, 'How are things in your immediate team?'                                       , 8007, 12002, 13001, 1, 10, 6, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4019, 'Any suggestions right now?'                                       , 8007, 12002, 13001, 1, 10, 8, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4029, 'How confident are you about our future?'                                       , 8020, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4039, 'How is your work/life balance right now?'                                       , 8020, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4009, 'Rate the impact of Michelle Jones being let go?'                                       , 8007, 12002, 13001, 1, 10, 4, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4019, 'What do you feel is the next important goal for our company?'                                       , 8007, 12002, 13001, 1, 10, 3, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4029, 'Do you feel monthly team meeting is good?'                                       , 8007, 12002, 13001, 1, 10, 5, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4039, 'Best thing to do with company going forward?'                                       , 8007, 12002, 13001, 1, 10, 4, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4009, 'What is your rating of your VP?'                                       , 8007, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4019, 'How do you make your department more efficient?'                                       , 8007, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 --start of mediumcompany questions
-insert into question values (question_id_seq.nextval, 3005, 4010, 'How are things in your department now?'                                       , 8008, 1, 10, 6, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3005, 4020, 'Any improvement suggestions?'                                       , 8008, 1, 10, 8, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3005, 4030, 'How do you feel about future at this company?'                                       , 8021, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3005, 4040, 'Do you feel like you are putting enough or too many hours?'                                       , 8008, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3005, 4048, 'Rate the impact of Steve Rogers being let go?'                                       , 8008, 1, 10, 4, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3005, 4049, 'Any big upcoming events/milestones?'                                       , 8008, 1, 10, 3, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3005, 4050, 'Do you feel meeting frequency is OK?'                                       , 8008, 1, 10, 5, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3005, 4051, 'What should we do with the company?'                                       , 8008, 1, 10, 4, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3005, 4052, 'What is your rating of the CFO?'                                       , 8008, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3005, 4053, 'List the #1 thing on your mind related to work?'                                       , 8008, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3005, 4054, 'Would you recommend this place to a friend to work?'                                       , 8021, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4010, 'How are things in your department now?'                                       , 8008, 12002, 13001, 1, 10, 6, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4020, 'Any improvement suggestions?'                                       , 8008, 12002, 13001, 1, 10, 8, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4030, 'How do you feel about future at this company?'                                       , 8021, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4040, 'Do you feel like you are putting enough or too many hours?'                                       , 8008, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4048, 'Rate the impact of Steve Rogers being let go?'                                       , 8008, 12002, 13001, 1, 10, 4, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4049, 'Any big upcoming events/milestones?'                                       , 8008, 12002, 13001, 1, 10, 3, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4050, 'Do you feel meeting frequency is OK?'                                       , 8008, 12002, 13001, 1, 10, 5, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4051, 'What should we do with the company?'                                       , 8008, 12002, 13001, 1, 10, 4, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4052, 'What is your rating of the CFO?'                                       , 8008, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4053, 'List the #1 thing on your mind related to work?'                                       , 8008, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4054, 'Would you recommend this place to a friend to work?'                                       , 8021, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 --start of largecompany questions
-insert into question values (question_id_seq.nextval, 3006, 4011, 'Are you looking to leave the company in the next 6 months?'                                       , 8022, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3006, 4021, 'How would you rate your immediate manager?'                                       , 8009, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3006, 4031, 'If you could change one thing in the company what would that be?'                                       , 8009, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3006, 4011, 'Are you looking to leave the company in the next 6 months?'                                       , 8022, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3006, 4021, 'How would you rate your immediate manager?'                                       , 8009, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3006, 4031, 'If you could change one thing in the company what would that be?'                                       , 8009, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 --start of verylargecompany questions
-insert into question values (question_id_seq.nextval, 3007, 4012, 'Are you looking to leave the company in the next 6 months?'                                       , 8023, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3007, 4022, 'How would you rate your immediate manager?'                                       , 8010, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3007, 4032, 'If you could change one thing in the company what would that be?'                                       , 8010, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3007, 4012, 'Are you looking to leave the company in the next 6 months?'                                       , 8023, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3007, 4022, 'How would you rate your immediate manager?'                                       , 8010, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3007, 4032, 'If you could change one thing in the company what would that be?'                                       , 8010, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 --start of eurodata questions
-insert into question values (question_id_seq.nextval, 3008, 4013, 'Are you looking to leave the company in the next 6 months?'                                       , 8024, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3008, 4023, 'How would you rate your immediate manager?'                                       , 8011, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3008, 4033, 'If you could change one thing in the company what would that be?'                                       , 8011, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3008, 4013, 'Are you looking to leave the company in the next 6 months?'                                       , 8024, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3008, 4023, 'How would you rate your immediate manager?'                                       , 8011, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3008, 4033, 'If you could change one thing in the company what would that be?'                                       , 8011, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 --start of northofthebordersoftware questions
-insert into question values (question_id_seq.nextval, 3009, 4014, 'Are you looking to leave the company in the next 6 months?'                                       , 8025, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3009, 4024, 'How would you rate your immediate manager?'                                       , 8012, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3009, 4034, 'If you could change one thing in the company what would that be?'                                       , 8012, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3009, 4014, 'Are you looking to leave the company in the next 6 months?'                                       , 8025, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3009, 4024, 'How would you rate your immediate manager?'                                       , 8012, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3009, 4034, 'If you could change one thing in the company what would that be?'                                       , 8012, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 --start of downundersolutions questions
-insert into question values (question_id_seq.nextval, 3010, 4015, 'Are you looking to leave the company in the next 6 months?'                                       , 8026, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3010, 4025, 'How would you rate your immediate manager?'                                       , 8013, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3010, 4035, 'If you could change one thing in the company what would that be?'                                       , 8013, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3010, 4015, 'Are you looking to leave the company in the next 6 months?'                                       , 8026, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3010, 4025, 'How would you rate your immediate manager?'                                       , 8013, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3010, 4035, 'If you could change one thing in the company what would that be?'                                       , 8013, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 --start of wangenterprises questions
-insert into question values (question_id_seq.nextval, 3011, 4016, 'Are you looking to leave the company in the next 6 months?'                                       , 8027, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3011, 4026, 'How would you rate your immediate manager?'                                       , 8014, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3011, 4036, 'If you could change one thing in the company what would that be?'                                       , 8014, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3011, 4016, 'Are you looking to leave the company in the next 6 months?'                                       , 8027, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3011, 4026, 'How would you rate your immediate manager?'                                       , 8014, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3011, 4036, 'If you could change one thing in the company what would that be?'                                       , 8014, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 --start of dubaiconstructioncompany questions
-insert into question values (question_id_seq.nextval, 3012, 4017, 'Are you looking to leave the company in the next 6 months?'                                       , 8028, 1, 10, 7, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3012, 4027, 'How would you rate your immediate manager?'                                       , 8015, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question values (question_id_seq.nextval, 3012, 4037, 'If you could change one thing in the company what would that be?'                                       , 8015, 1, 10, 9, 'Y', sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3012, 4017, 'Are you looking to leave the company in the next 6 months?'                                       , 8028, 12002, 13001, 1, 10, 7, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3012, 4027, 'How would you rate your immediate manager?'                                       , 8015, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3012, 4037, 'If you could change one thing in the company what would that be?'                                       , 8015, 12002, 13001, 1, 10, 9, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));
+
+--couple of extra questions added so doesn't mess up order of question_id...ie if we don't put these at end foreign key constraints will fail
+insert into question values (question_id_seq.nextval, 3000, 4001, 'WHAT FREE TEXT WOULD YOU LIKE TO ENTER?' , 80, 12001, 13001, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4001, 'WHAT FREE TEXT WOULD YOU LIKE TO ENTER?' , 82, 12001, 13001, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+
+
+
+
+--insert standard dtm data questions  added by axe 5/4/2015
+-- insert into question_category first
+insert into question_category values (80, 3000, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (81, 3001, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (82, 3002, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (83, 3003, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (84, 3004, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (85, 3005, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (86, 3006, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (87, 3007, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (88, 3008, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (89, 3009, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (90, 3010, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (91, 3011, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (92, 3012, 'Generic Question Category', 'Generic question category for pre-defined questions users will see in PulseBox', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+
+-- now insert the 10 questions for company_id 3000
+insert into question values (question_id_seq.nextval, 3000, 4000, 'How are you feeling right now about the company?' , 80, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4000, 'How are you feeling right now about your department?' , 80, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4000, 'How are you feeling about your manager?' , 80, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4000, 'Are you currently considering leaving the company?' , 80, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4000, 'Do you currently have something valuable on your mind that management should be aware of?' , 80, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4000, 'Do you feel the company is going in the right direction?' , 80, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4000, 'Do you feel your department is going in the right direction?' , 80, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4000, 'Do you feel your voice is being heard by the right people in the company?' , 80, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4000, 'How likely are you to leave the company after the bonus payout in 2 weeks?' , 80, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3000, 4000, 'Do you feel the number of hours you are working is ok?' , 80, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+
+-- now insert the 10 questions for company_id 3001
+insert into question values (question_id_seq.nextval, 3001, 4004, 'How are you feeling right now about the company?' , 81, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3001, 4004, 'How are you feeling right now about your department?' , 81, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3001, 4004, 'How are you feeling about your manager?' , 81, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3001, 4004, 'Are you currently considering leaving the company?' , 81, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3001, 4004, 'Do you currently have something valuable on your mind that management should be aware of?' , 81, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3001, 4004, 'Do you feel the company is going in the right direction?' , 81, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3001, 4004, 'Do you feel your department is going in the right direction?' , 81, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3001, 4004, 'Do you feel your voice is being heard by the right people in the company?' , 81, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3001, 4004, 'How likely are you to leave the company after the bonus payout in 2 weeks?' , 81, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3001, 4004, 'Do you feel the number of hours you are working is ok?' , 81, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+
+-- now insert the 10 questions for company_id 3002
+insert into question values (question_id_seq.nextval, 3002, 4007, 'How are you feeling right now about the company?' , 82, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'How are you feeling right now about your department?' , 82, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'How are you feeling about your manager?' , 82, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'Are you currently considering leaving the company?' , 82, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'Do you currently have something valuable on your mind that management should be aware of?' , 82, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'Do you feel the company is going in the right direction?' , 82, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'Do you feel your department is going in the right direction?' , 82, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'Do you feel your voice is being heard by the right people in the company?' , 82, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'How likely are you to leave the company after the bonus payout in 2 weeks?' , 82, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3002, 4007, 'Do you feel the number of hours you are working is ok?' , 82, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+
+-- now insert the 10 questions for company_id 3003
+insert into question values (question_id_seq.nextval, 3003, 4008, 'How are you feeling right now about the company?' , 83, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4008, 'How are you feeling right now about your department?' , 83, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4008, 'How are you feeling about your manager?' , 83, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4008, 'Are you currently considering leaving the company?' , 83, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4008, 'Do you currently have something valuable on your mind that management should be aware of?' , 83, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4008, 'Do you feel the company is going in the right direction?' , 83, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4008, 'Do you feel your department is going in the right direction?' , 83, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4008, 'Do you feel your voice is being heard by the right people in the company?' , 83, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4008, 'How likely are you to leave the company after the bonus payout in 2 weeks?' , 83, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3003, 4008, 'Do you feel the number of hours you are working is ok?' , 83, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+
+-- now insert the 10 questions for company_id 3004
+insert into question values (question_id_seq.nextval, 3004, 4009, 'How are you feeling right now about the company?' , 84, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4009, 'How are you feeling right now about your department?' , 84, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4009, 'How are you feeling about your manager?' , 84, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4009, 'Are you currently considering leaving the company?' , 84, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4009, 'Do you currently have something valuable on your mind that management should be aware of?' , 84, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4009, 'Do you feel the company is going in the right direction?' , 84, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4009, 'Do you feel your department is going in the right direction?' , 84, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4009, 'Do you feel your voice is being heard by the right people in the company?' , 84, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4009, 'How likely are you to leave the company after the bonus payout in 2 weeks?' , 84, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3004, 4009, 'Do you feel the number of hours you are working is ok?' , 84, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+
+-- now insert the 10 questions for company_id 3005
+insert into question values (question_id_seq.nextval, 3005, 4010, 'How are you feeling right now about the company?' , 85, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4010, 'How are you feeling right now about your department?' , 85, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4010, 'How are you feeling about your manager?' , 85, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4010, 'Are you currently considering leaving the company?' , 85, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4010, 'Do you currently have something valuable on your mind that management should be aware of?' , 85, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4010, 'Do you feel the company is going in the right direction?' , 85, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4010, 'Do you feel your department is going in the right direction?' , 85, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4010, 'Do you feel your voice is being heard by the right people in the company?' , 85, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4010, 'How likely are you to leave the company after the bonus payout in 2 weeks?' , 85, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question values (question_id_seq.nextval, 3005, 4010, 'Do you feel the number of hours you are working is ok?' , 85, 12002, 13000, 1, 10, 2, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 
 PROMPT ANSWER................................
