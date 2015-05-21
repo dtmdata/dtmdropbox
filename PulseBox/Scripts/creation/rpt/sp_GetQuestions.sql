@@ -1,5 +1,6 @@
-create or replace procedure     sp_GetStandardQuestions (IN_company_id number,
-                                                      IN_source_id number ,p_recordset    OUT SYS_REFCURSOR
+create or replace procedure     sp_GetQuestions (IN_company_id number,
+                                                         IN_source_id number ,
+                                                         p_recordset    OUT SYS_REFCURSOR
                                                     )
 as
 v_company_id    number := IN_company_id;
@@ -27,4 +28,4 @@ when others then
    rollback;  --try to raise an error to test this
 
 
-end sp_GetStandardQuestions;
+end sp_GetQuestions;

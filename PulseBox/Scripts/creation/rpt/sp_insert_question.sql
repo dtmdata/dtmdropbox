@@ -7,6 +7,8 @@ create or replace procedure     sp_insert_question (IN_company_id     IN integer
                           IN_weight_factor  IN integer,
                           IN_type_id        IN integer,
                           IN_source_id      IN integer,
+                          IN_start_date     IN varchar2 default null,
+                          IN_end_date       IN varchar2 default null,
                           p_recordset       OUT SYS_REFCURSOR
                                                   )
 as
@@ -26,8 +28,8 @@ V_WEIGHT_FACTOR    integer            := IN_weight_factor;
 V_TYPE_ID    integer            := IN_type_id;
 V_SOURCE_ID    integer            := IN_source_id;
 
-v_START_DATE    date     := sysdate;
-v_END_DATE      date     := to_date('12/31/9999','MM/DD/YYYY');
+v_START_DATE    date     := to_date(IN_start_date,'DD-MON-YYYY');
+v_END_DATE      date     := to_date(IN_end_date,'DD-MON-YYYY');
 V_Trans_Error Varchar2(100)         := Null;
 V_Trans_Error_Msg Varchar2(200)     := Null;
 
