@@ -1,5 +1,5 @@
-create or replace procedure sp_GetPulseComments (IN_company_id  IN number,  
-                                                 IN_dept_id     IN number,    --single DeptID for DEMO; can extend this out to a CSV list later; pretty easy.
+create or replace procedure sp_GetPulseComments (IN_company_id  IN number,
+                                                 IN_dept_id     IN varchar2,    --single DeptID for DEMO; can extend this out to a CSV list later; pretty easy.
 												 IN_rating_csv  IN varchar2,  --list of numbers, 1-10 inclusive, that User wishes to see corresponding response text for.
 												 IN_start_date_range  IN  varchar2 DEFAULT NULL,
                                                  IN_end_date_range    IN  varchar2 DEFAULT NULL,
@@ -38,34 +38,41 @@ dbms_output.put_line('Start <=> End date range is: ' || v_IN_start_date_range ||
 /*
 || populate table GTT_ID_LIST with DEPT_IDs from the app, i.e. v_IN_dept_id
 */
-
-sp_parse_id_list(v_IN_rating_csv);  --inserts individual rating values into GTT_ID_LIST table.
+sp_parse_id_list(v_IN_rating_csv, 'RATING');  --inserts individual rating values into GTT_ID_LIST table.
 
   OPEN p_recordset FOR
      SELECT
-		ANSWER_ID,
-		QUESTION_ID,
-		ANSWER_TEXT,
+		A.ANSWER_ID,
+		A.QUESTION_ID,
+		A.ANSWER_TEXT,
 		to_char(A.answer_date, 'DD-MON-YYYY')  as ANS_DT,    --ANSWER_DATE
-		EMP_ID,
-		COMPANY_ID,
-		ANSWER_RATING,
-		URGENCY,
-		IMPACT,
-		START_DATE,
-		END_DATE,
-		DEPT_ID,
-		LOCATION_ID,
-		ANSWER_YN
+		A.EMP_ID,
+		A.COMPANY_ID,
+		A.ANSWER_RATING,
+		A.URGENCY,
+		A.IMPACT,
+		A.START_DATE,
+		A.END_DATE,
+		A.DEPT_ID,
+		A.LOCATION_ID,
+		A.ANSWER_YN
      FROM
-        ANSWER  A
+        ANSWER  A,
+        QUESTION Q,
+        QUESTION_TYPE QT
      WHERE
         1=1
 		and A.company_id = v_IN_company_id   --e.g. 3005
+    and A.question_id = Q.question_id
+    and Q.type_id = QT.type_id
+    and upper(QT.type_name) = upper('free text')
         AND A.answer_date BETWEEN v_IN_start_date_range
                               AND v_IN_end_date_range
         AND A.dept_id = v_IN_dept_id
-		AND A.answer_rating IN(select ID_LIST from GTT_ID_LIST  /*extend proic using this:  WHERE upper(ID_TYPE)=upper('rating') */ )
+		AND A.answer_rating IN(select ID_LIST
+		                       from GTT_ID_LIST
+							   WHERE upper(ID_TYPE)=upper('RATING')
+							   )
      ORDER BY A.answer_rating ASC  --show "worst" text entries first
 ;
 
@@ -81,10 +88,10 @@ when OTHERS then
    --rollback;  --is this relevant in this proc?
    v_sql_error_code := SQLCODE;
    v_sql_error_msg  := SQLERRM;
-   raise_application_error (-20002,'Exception OTHERS:  ' || v_sql_error_code || ': '||v_sql_error_msg); 
-   
+   raise_application_error (-20002,'Exception OTHERS:  ' || v_sql_error_code || ': '||v_sql_error_msg);
+
 END sp_GetPulseComments;
-/
+
 
 /*
 DD:  20150519.
