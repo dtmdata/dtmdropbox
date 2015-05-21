@@ -1,4 +1,4 @@
-﻿create or replace procedure     sp_insert_answer_text(IN_company_id     IN integer,
+create or replace procedure     sp_insert_answer_text(IN_company_id     IN integer,
                                                   IN_emp_id         IN integer,
                                                   IN_answer_rating  IN integer,   --1-10 rating from user web page
                                                   IN_answer_text    IN varchar2,  --e.g. answer_text
@@ -107,3 +107,4 @@ When Others Then
    V_Trans_Error_Msg := Substr (Sqlerrm, 1, 512);
    raise_application_error (-20002,'An error has occurred inserting an answer.' || v_trans_error || ','||V_Trans_Error_Msg);  --try to raise an error to test this
 END  sp_insert_answer_text;
+/

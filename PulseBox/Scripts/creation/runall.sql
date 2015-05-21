@@ -47,30 +47,69 @@ PROMPT
 
 PROMPT 
 PROMPT STORED PROCS start: Create Stored Procedures etc........................
+
 PROMPT sp_GetCompanyEvents: 
 @.\rpt\sp_GetCompanyEvents.sql
+
 PROMPT sp_GetDeptsSubordToEmpID: 
 @.\rpt\sp_GetDeptsSubordToEmpID.sql
+
 PROMPT sp_GetIndustryForCompany: 
 @.\rpt\sp_GetIndustryForCompany.sql
+
+PROMPT sp_GetEventCategory: 
+@.\rpt\sp_GetEventCategory.sql
+
 PROMPT sp_GetLocsSubordToEmpID: 
 @.\rpt\sp_GetLocsSubordToEmpID.sql
+
+PROMPT sp_getnewevents: 
+@.\rpt\sp_getnewevents.sql
+
+PROMPT sp_getpulsecomments: 
+@.\rpt\sp_getpulsecomments.sql
+
+PROMPT sp_getquestioncategory: 
+@.\rpt\sp_getquestioncategory.sql
+
+PROMPT sp_getquestions: 
+@.\rpt\sp_getquestions.sql
+
+PROMPT sp_getquestiontype:
+@.\rpt\sp_getquestiontype.sql
+
+PROMPT sp_insert_answer:
+@.\rpt\sp_insert_answer.sql
+
+PROMPT sp_insert_answer_text:
+@.\rpt\sp_insert_answer_text.sql
+
+PROMPT sp_insert_event:
+@.\rpt\sp_insert_event.sql
+
+PROMPT sp_insert_question: 
+@.\rpt\sp_insert_question.sql
 
 PROMPT sp_parse_id_list: 
 @.\rpt\sp_parse_id_list.sql
 
-PROMPT sp_pulse_attrition: 
-@.\rpt\sp_pulse_attrition.sql
 PROMPT sp_pulse_company: 
 @.\rpt\sp_pulse_company.sql
+
 PROMPT sp_pulse_depts: 
 @.\rpt\sp_pulse_depts.sql
+
 PROMPT sp_pulse_industry: 
 @.\rpt\sp_pulse_industry.sql
+
 PROMPT @.\rpt\sp_pulse_locations: 
 @.\rpt\sp_pulse_locations.sql
-PROMPT sp_pulse_pct_participation: 
+
+PROMPT sp_pulse_pct_participation:
 @.\rpt\sp_pulse_pct_participation.sql
+
+PROMPT sp_pulse_q_category:
+@.\rpt\sp_pulse_q_category.sql
 
 
 PROMPT

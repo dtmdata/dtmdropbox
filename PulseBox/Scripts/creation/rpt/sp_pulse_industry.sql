@@ -15,6 +15,10 @@ v_DEFAULT_TIMEFRAME integer := 45;
 v_sql_cleanup varchar2(255) := '';
 v_id_count integer := 0;
 
+CRLF varchar2(2)                 := chr(10)||chr(13);
+v_sql_error_code  integer        :=  0;
+v_sql_error_msg   varchar2(4000) := '';
+
 BEGIN
 --assign default time window if either START or END dates are not passed in.
 if (v_IN_start_date_range IS NULL or v_IN_start_date_range='')
@@ -39,7 +43,7 @@ v_sql_cleanup := 'delete from GTT_ID_LIST';   --remove any remaining rows from t
 execute immediate v_sql_cleanup;
 commit;
 
-sp_parse_id_list(v_IN_industry_id);  --inserts individual industry_id values into GTT_ID_LIST table.
+sp_parse_id_list(v_IN_industry_id, 'INDUSTRY');  --inserts individual industry_id values into GTT_ID_LIST table.
 select count(*) into v_id_count from gtt_id_list;
 
 if v_id_count < 1 then  --not enough IDs passed in.  sp_parse_id_list() doesn't handle this yet...
@@ -68,7 +72,10 @@ elsif v_id_count = 1  then   --single ID passed in
 	   --and A.company_id = v_IN_company_id   --e.g. 3000
        and A.company_id = MM.company_id
 	   and MM.industry_id = I.industry_id
-       AND I.industry_id = D.id_list
+       AND I.industry_id IN(select id_list 
+	                        from gtt_id_list 
+							where upper(id_type) = upper('INDUSTRY')
+							)
        AND A.answer_date BETWEEN v_IN_start_date_range
                              AND v_IN_end_date_range
      GROUP BY
@@ -97,7 +104,10 @@ else  --more than 1 ID passed in
 	   --and A.company_id = v_IN_company_id   --e.g. 3000
        and A.company_id = MM.company_id
 	   and MM.industry_id = I.industry_id
-       AND I.industry_id = D.id_list
+       AND I.industry_id IN(select id_list 
+	                        from gtt_id_list 
+							where upper(id_type) = upper('INDUSTRY')
+							)
        AND A.answer_date BETWEEN v_IN_start_date_range
                              AND v_IN_end_date_range
 /*
@@ -119,6 +129,11 @@ commit;
 
 EXCEPTION
 when OTHERS then
-   dbms_output.put_line('SQLERRM: '||SQLERRM||'.  SQLCODE: '||SQLCODE);
+   dbms_output.put_line('EXCEPTION OTHERS:  SQLCODE: '||SQLCODE  || ':  SQLERRM: '||SQLERRM||'.');
+   --rollback;  --is this relevant in this proc?
+   v_sql_error_code := SQLCODE;
+   v_sql_error_msg  := SQLERRM;
+   raise_application_error (-20002,'Exception OTHERS:  ' || CRLF || v_sql_error_code || ': '||v_sql_error_msg); 
+  
 END SP_PULSE_INDUSTRY;
 /

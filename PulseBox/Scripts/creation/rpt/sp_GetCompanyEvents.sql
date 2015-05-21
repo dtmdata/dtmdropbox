@@ -92,3 +92,4 @@ when OTHERS then
    raise_application_error (-20002,'Exception OTHERS:  ' || CRLF || v_sql_error_code || ': '||v_sql_error_msg);
 
 END sp_GetCompanyEvents;
+/

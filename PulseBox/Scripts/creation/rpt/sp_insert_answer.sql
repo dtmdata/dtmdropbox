@@ -88,3 +88,4 @@ When Others Then
    V_Trans_Error_Msg := Substr (Sqlerrm, 1, 512);
    raise_application_error (-20002,'An error has occurred inserting an answer.' || v_trans_error || ','||V_Trans_Error_Msg);--try to raise an error to test this
 END  sp_insert_answer;
+/

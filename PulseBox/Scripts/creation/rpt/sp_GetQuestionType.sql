@@ -22,3 +22,4 @@ when others then
 
 
 end sp_GetQuestionType ;
+/

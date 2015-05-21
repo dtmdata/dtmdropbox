@@ -301,9 +301,10 @@ PROMPT Create GTT/Global Temp Table, used for storing intermediate parsed values
 --@cr_tables_GTT.sql
 /** For use in stored procedures when passing strings back-forth from app to db, e.g. sp_pulse_depts() **/
 DROP TABLE gtt_ID_LIST;
-CREATE GLOBAL TEMPORARY TABLE gtt_ID_LIST (
-  ID_LIST  NUMBER
+CREATE GLOBAL TEMPORARY TABLE GTT_ID_LIST (
+  ID_LIST NUMBER,
+  ID_TYPE VARCHAR2(50) --DEPT, QUESTION_CATEGORY, etc
 ) ON COMMIT PRESERVE ROWS;
-COMMENT ON TABLE gtt_ID_LIST IS 'GTT/Global Temp Table to store IDs from comma-separated ID list passed IN to st.proc';
+COMMENT ON TABLE gtt_ID_LIST IS 'GTT/Global Temp Table to store IDs and their respective "TYPES", from comma-separated ID list passed IN to st.proc';
 
 

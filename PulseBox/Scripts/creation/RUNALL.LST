@@ -3042,7 +3042,7 @@ Table altered.
 STORED PROCS start: Create Stored Procedures etc........................
 sp_GetCompanyEvents:
 
-Warning: Procedure created with compilation errors.
+Procedure created.
 
 sp_GetDeptsSubordToEmpID:
 
@@ -3052,15 +3052,51 @@ sp_GetIndustryForCompany:
 
 Procedure created.
 
+sp_GetEventCategory:
+
+Procedure created.
+
 sp_GetLocsSubordToEmpID:
 
 Procedure created.
 
-sp_parse_id_list:
+sp_getnewevents:
 
 Procedure created.
 
-sp_pulse_attrition:
+sp_getpulsecomments:
+
+Procedure created.
+
+sp_getquestioncategory:
+
+Procedure created.
+
+sp_getquestions:
+
+Procedure created.
+
+sp_getquestiontype:
+
+Procedure created.
+
+sp_insert_answer:
+
+Procedure created.
+
+sp_insert_answer_text:
+
+Procedure created.
+
+sp_insert_event:
+
+Procedure created.
+
+sp_insert_question:
+
+Procedure created.
+
+sp_parse_id_list:
 
 Procedure created.
 
@@ -3081,6 +3117,10 @@ Procedure created.
 Procedure created.
 
 sp_pulse_pct_participation:
+
+Procedure created.
+
+sp_pulse_q_category:
 
 Procedure created.
 

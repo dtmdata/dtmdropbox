@@ -5,8 +5,8 @@ create or replace procedure SP_PULSE_LOCATIONS (IN_company_id        IN  number,
                                                 p_recordset          OUT SYS_REFCURSOR)
 AS
 
-v_IN_company_id     integer := IN_company_id;
-v_IN_location_id        varchar2(255) := IN_location_id;
+v_IN_company_id    integer       := IN_company_id;
+v_IN_location_id   varchar2(255) := IN_location_id;
 
 v_IN_start_date_range  date := to_date(IN_start_date_range,'DD-MON-YYYY');
 v_IN_end_date_range    date := to_date(IN_end_date_range  ,'DD-MON-YYYY');
@@ -15,6 +15,10 @@ v_DEFAULT_TIMEFRAME integer := 45;
 v_sql_cleanup varchar2(255) := '';
 
 --v_rc refcursor;  --how to make this an OUT var, for debug from within sp_pulse_locations() ???
+
+CRLF varchar2(2)                 := chr(10)||chr(13);
+v_sql_error_code  integer        :=  0;
+v_sql_error_msg   varchar2(4000) := '';
 
 BEGIN
 --assign default time window if either START or END dates are not passed in.
@@ -35,7 +39,7 @@ dbms_output.put_line('start <=> end used is: ' || v_IN_start_date_range || ' <=>
 */
 
 --sp_parse_id_list(v_IN_location_id, :v_rc);
-sp_parse_id_list(v_IN_location_id);  --inserts individual location_id values into GTT_ID_LIST table.
+sp_parse_id_list(v_IN_location_id, 'LOCATION');  --inserts individual location_id values into GTT_ID_LIST table.
 
   OPEN p_recordset FOR
      SELECT
@@ -55,7 +59,10 @@ sp_parse_id_list(v_IN_location_id);  --inserts individual location_id values int
 		and A.company_id = v_IN_company_id   --e.g. 3005
         AND A.answer_date BETWEEN v_IN_start_date_range
                               AND v_IN_end_date_range
-        AND A.location_id = D.id_list
+        AND A.location_id IN(select id_list 
+	                        from gtt_id_list 
+							where upper(id_type) = upper('LOCATION')
+							)
      GROUP BY
         A.company_id, A.answer_date
      ORDER BY A.answer_date   --ANS_DT
@@ -67,6 +74,13 @@ v_sql_cleanup := 'delete from GTT_ID_LIST';   --remove any remaining rows from t
 execute immediate v_sql_cleanup;
 commit;
 
-
+EXCEPTION
+when OTHERS then
+   dbms_output.put_line('EXCEPTION OTHERS:  SQLCODE: '||SQLCODE  || ':  SQLERRM: '||SQLERRM||'.');
+   --rollback;  --is this relevant in this proc?
+   v_sql_error_code := SQLCODE;
+   v_sql_error_msg  := SQLERRM;
+   raise_application_error (-20002,'Exception OTHERS:  ' || CRLF || v_sql_error_code || ': '||v_sql_error_msg); 
+   
 END SP_PULSE_LOCATIONS;
 /

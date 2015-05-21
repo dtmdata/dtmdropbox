@@ -15,6 +15,9 @@ v_DEFAULT_TIMEFRAME integer := 45;
 
 v_sql_cleanup varchar2(255) := '';
 
+CRLF varchar2(2)                 := chr(10)||chr(13);
+v_sql_error_code  integer        :=  0;
+v_sql_error_msg   varchar2(4000) := '';
 
 BEGIN
 --assign default time window if either START or END dates are not passed in.
@@ -34,7 +37,7 @@ dbms_output.put_line('start <=> end used is: ' || v_IN_start_date_range || ' <=>
 || populate table GTT_ID_LIST with DEPT_IDs from the app, i.e. v_IN_dept_id
 */
 --sp_parse_id_list(v_IN_dept_id, :v_rc);
-sp_parse_id_list(v_IN_dept_id);  --inserts individual dept_id values into GTT_ID_LIST table.
+sp_parse_id_list(v_IN_dept_id, 'DEPT');  --inserts individual dept_id values into GTT_ID_LIST table.
 
 OPEN p_recordset FOR
 select
@@ -52,7 +55,10 @@ from
           where
           1=1
           and A.company_id = v_IN_company_id   --3005/4010,4020,4030 ;  3000/4000,4001 ;
-          and A.dept_id = G.id_list
+          and A.dept_id IN(select id_list 
+		                 from gtt_id_list 
+		                 where upper(id_type) = upper('DEPT')
+						 )
           and A.answer_date between v_IN_start_date_range
                                 and v_IN_end_date_range
 --and A.answer_date between to_date('01-jan-2010', 'DD-MON-YYYY')
@@ -62,8 +68,11 @@ from
     group by answer_date
    ) NUM,
    (select count(*) AS tot_emp_count
-    from employee E, gtt_id_list G
-    where E.dept_id = G.id_list
+    from employee E
+    where E.dept_id IN(select id_list 
+		               from gtt_id_list 
+		               where upper(id_type) = upper('DEPT')
+					  )
    ) DENOM
 order by NUM.answer_date
 ;
@@ -74,5 +83,13 @@ v_sql_cleanup := 'delete from GTT_ID_LIST';   --remove any remaining rows from t
 execute immediate v_sql_cleanup;
 commit;
 
+EXCEPTION
+when OTHERS then
+   dbms_output.put_line('EXCEPTION OTHERS:  SQLCODE: '||SQLCODE  || ':  SQLERRM: '||SQLERRM||'.');
+   --rollback;  --is this relevant in this proc?
+   v_sql_error_code := SQLCODE;
+   v_sql_error_msg  := SQLERRM;
+   raise_application_error (-20002,'Exception OTHERS:  ' || CRLF || v_sql_error_code || ': '||v_sql_error_msg); 
+   
 END SP_PULSE_PCT_PARTICIPATION;
 /

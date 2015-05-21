@@ -1,6 +1,6 @@
-create or replace procedure SP_PULSE_Q_CATEGORY (IN_company_id            IN  number,
+create or replace procedure SP_PULSE_ATTRITION (IN_company_id            IN  number,
                                                 IN_dept_id               IN  varchar2, --comma-sep QUESTION_CATEGORY_ID list sent from the web app
-                                                IN_question_category_id  IN  varchar2, --comma-sep QUESTION_CATEGORY_ID list sent from the web app
+                                                IN_question_category_id  IN  varchar2, --comma-sep QUESTION_CATEGORY_ID list sent from the web app												
                                                 IN_start_date_range      IN  varchar2 DEFAULT NULL,
                                                 IN_end_date_range        IN  varchar2 DEFAULT NULL,
                                                 p_recordset              OUT SYS_REFCURSOR)
@@ -55,29 +55,29 @@ OPEN p_recordset FOR
 	 round(stddev(A.answer_rating),2) 	    as STDDEV,
 	 round(variance(A.answer_rating),2)     as VARIANCE
   from
-    GTT_ID_LIST D,
+    GTT_ID_LIST D, 
     answer A,
     question Q,
     (select category_id, company_id, category_name
      from question_category
      where  category_id IN(select id_list from gtt_id_list where upper(id_type) = upper('QUESTION_CATEGORY'))
-	    and company_id = v_IN_company_id
+	    and company_id = v_IN_company_id   
     ) QC
   where
      1=1
-     and A.dept_id IN(SELECT D.id_list
-	                  FROM gtt_id_list D1
+     and A.dept_id IN(SELECT D.id_list 
+	                  FROM gtt_id_list D1 
 					  WHERE upper(D1.id_type) = upper('DEPT')
 					  )
      and A.company_id  = v_IN_company_id
      and A.question_id = Q.question_id
      and Q.category_id = QC.category_id
-     and Q.category_id IN(SELECT D.id_list
-	                      FROM gtt_id_list D1
-						  WHERE
+     and Q.category_id IN(SELECT D.id_list 
+	                      FROM gtt_id_list D1 
+						  WHERE 
 						  1=1
 						  and upper(D1.id_type) = upper('QUESTION_CATEGORY')
-						  )
+						  )   
      and A.answer_date BETWEEN v_IN_start_date_range
                            and v_IN_end_date_range
   group by QC.category_name, A.company_id, a.answer_date
@@ -96,7 +96,7 @@ when OTHERS then
    --rollback;  --is this relevant in this proc?
    v_sql_error_code := SQLCODE;
    v_sql_error_msg  := SQLERRM;
-   raise_application_error (-20002,'Exception OTHERS:  ' || CRLF || v_sql_error_code || ': '||v_sql_error_msg);
-
-END SP_PULSE_Q_CATEGORY;
+   raise_application_error (-20002,'Exception OTHERS:  ' || CRLF || v_sql_error_code || ': '||v_sql_error_msg); 
+   
+END SP_PULSE_ATTRITION;
 /
