@@ -11,7 +11,7 @@ NULL;
 
 
 OPEN p_recordset FOR
-    select distinct QUESTION_TEXT, TYPE_ID
+    select distinct QUESTION_ID, QUESTION_TEXT, TYPE_ID
     from
         Question
     where
