@@ -48,17 +48,23 @@ PROMPT
 PROMPT 
 PROMPT STORED PROCS start: Create Stored Procedures etc........................
 
+PROMPT sp_DisplayNotifications: 
+@.\rpt\sp_DisplayNotifications.sql
+
+PROMPT sp_fcst_Team_Morale: 
+@.\rpt\sp_fcst_Team_Morale.sql
+
 PROMPT sp_GetCompanyEvents: 
 @.\rpt\sp_GetCompanyEvents.sql
 
 PROMPT sp_GetDeptsSubordToEmpID: 
 @.\rpt\sp_GetDeptsSubordToEmpID.sql
 
-PROMPT sp_GetIndustryForCompany: 
-@.\rpt\sp_GetIndustryForCompany.sql
-
 PROMPT sp_GetEventCategory: 
 @.\rpt\sp_GetEventCategory.sql
+
+PROMPT sp_GetIndustryForCompany: 
+@.\rpt\sp_GetIndustryForCompany.sql
 
 PROMPT sp_GetLocsSubordToEmpID: 
 @.\rpt\sp_GetLocsSubordToEmpID.sql
@@ -75,6 +81,9 @@ PROMPT sp_getquestioncategory:
 PROMPT sp_getquestions: 
 @.\rpt\sp_getquestions.sql
 
+PROMPT sp_getquestionsbycategory: 
+@.\rpt\sp_getquestionsbycategory.sql
+
 PROMPT sp_getquestiontype:
 @.\rpt\sp_getquestiontype.sql
 
@@ -86,6 +95,9 @@ PROMPT sp_insert_answer_text:
 
 PROMPT sp_insert_event:
 @.\rpt\sp_insert_event.sql
+
+PROMPT sp_insert_notification:
+@.\rpt\sp_insert_notification.sql
 
 PROMPT sp_insert_question: 
 @.\rpt\sp_insert_question.sql
@@ -111,6 +123,8 @@ PROMPT sp_pulse_pct_participation:
 PROMPT sp_pulse_q_category:
 @.\rpt\sp_pulse_q_category.sql
 
+PROMPT sp_sendnotification:
+@.\rpt\sp_sendnotification.sql
 
 PROMPT
 PROMPT (disabled) Run test.RUNALL.sql to compile and run test cases for each proc().

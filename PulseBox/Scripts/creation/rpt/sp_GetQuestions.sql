@@ -16,7 +16,7 @@ OPEN p_recordset FOR
         Question
     where
         1=1 and
-        company_id=v_company_id 
+        company_id=v_company_id
         and source_id=v_source_id
         and type_id!=12001
 ;

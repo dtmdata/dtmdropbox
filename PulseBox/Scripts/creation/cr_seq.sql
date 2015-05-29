@@ -96,6 +96,13 @@ DROP SEQUENCE industry_id_seq;
 CREATE SEQUENCE industry_id_seq MINVALUE 1000 START WITH 1000 INCREMENT BY 1 CACHE 10;
 
 
+PROMPT 
+PROMPT Table => NOTIFICATION.........................................................................
+DROP SEQUENCE notification_id_seq;
+CREATE SEQUENCE notification_id_seq MINVALUE 14000 START WITH 14000 INCREMENT BY 1 CACHE 10;
+
+
+
 
 
 

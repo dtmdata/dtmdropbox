@@ -15,7 +15,7 @@ drop table DEPARTMENT           cascade constraints;
 drop table INDUSTRY             cascade constraints;
 drop table TEMP_USER_ID	        cascade constraints;
 drop table TEMP_COMPANY_INFO    cascade constraints;
-
+drop table NOTIFICATION		cascase constraints;
 
 -- ???: As of 10/8/14 we need to add unique constraint to entity_name+entity_end_date to allow for multiple legitmate names.
 
@@ -253,6 +253,31 @@ create table ANSWER
   constraint answer_pk primary key (answer_id) enable
 );
 comment on table ANSWER is 'Table contains Answers of Employees to various Questions';
+
+
+create table NOTIFICATION
+(
+  notification_id		number NOT NULL,
+  company_id 			number NOT NULL,
+  dept_id			number NOT NULL,
+  notification_name           	varchar2(30),
+  notification_text		varchar2(1000),
+  email_addr			varchar2(50),
+  enabled			char(1),
+  creation_date			date,
+  last_sent			date,
+  counter			number,
+  delay				number,
+  frequency			number,
+  min_threshold			number,
+  max_threshold			number,
+  start_date            	date NOT NULL,  
+  end_date              	date NOT NULL,  
+  constraint notification_pk primary key (notification_id) enable,
+  constraint notification_uq01 unique (notification_id, company_id, dept_id) enable
+);
+comment on table NOTIFICATION is 'Table contains notifications for a company';
+
 
 
 -- temp table for PB/LITE version to create IDs and update employee table after that

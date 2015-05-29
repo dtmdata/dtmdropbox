@@ -1,8 +1,8 @@
 create or replace procedure     sp_insert_answer(IN_company_id        IN integer,
                                                   IN_emp_id            IN integer,
                                                   IN_question_id       IN integer,
-						  IN_type_id  	       IN integer,
-                                                  IN_answer            IN varchar2,                                             
+                                                  IN_type_id             IN integer,
+                                                  IN_answer            IN varchar2,
                                                   p_recordset       OUT SYS_REFCURSOR
                                                   )
 as
@@ -14,8 +14,8 @@ v_tbl  varchar2(30)   := 'ANSWER';
 v_ANSWER_ID     integer  := answer_id_seq.nextval;
 v_EMP_ID        integer  := IN_emp_id;
 v_COMPANY_ID    integer  := IN_company_id;
-v_TYPE_ID	integer	 := IN_type_id;
-v_QUESTION_ID   integer  := IN_question_id;   
+v_TYPE_ID    integer     := IN_type_id;
+v_QUESTION_ID   integer  := IN_question_id;
 v_ANSWER        varchar2(2000) := IN_answer;
 v_ANSWER_DATE   date     := sysdate;
 v_IMPACT        integer  := 5;  --IN_impact;
@@ -23,7 +23,7 @@ v_URGENCY       integer  := 5;  --IN_urgency;
 v_START_DATE    date     := sysdate;
 v_END_DATE      date     := to_date('12/31/9999','MM/DD/YYYY');v_ANSWER_RATING integer  := 0;
 
-v_DEPT_ID       integer	 := 0;	
+v_DEPT_ID       integer     := 0;
 v_LOCATION_ID   integer  := 0;
 v_ANSWER_YN varchar2(1)  := '';
 
@@ -48,11 +48,11 @@ if v_TYPE_ID = 12000 then
   v_ANSWER_YN := v_ANSWER;
   v_ANSWER := '';
 end if;
-if v_TYPE_ID = 12001 then 
+if v_TYPE_ID = 12001 then
  v_ANSWER := v_ANSWER;
 end if;
 if v_TYPE_ID = 12002 then
-  v_ANSWER_RATING := to_number(v_ANSWER, '9');
+  v_ANSWER_RATING := to_number(v_ANSWER, '99');
   v_ANSWER := '';
 end if;
 
@@ -100,7 +100,7 @@ OPEN p_recordset FOR
     from ANSWER
     where
      answer_id=V_ANSWER_ID;
-   
+
 exception
 When Others Then
    Rollback;

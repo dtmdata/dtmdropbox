@@ -16,6 +16,7 @@ delete from company;
 delete from industry;
 delete from TEMP_USER_ID;
 delete from TEMP_COMPANY_INFO;
+delete from NOTIFICATION;
 
 
 -- insert all generic/dummy data first
@@ -33,6 +34,7 @@ insert into question_source values (1, 'Sample question source', 'Generic questi
 insert into question_type values (1, 'Sample Question Type', 'Generic question type to be used temporary basis', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into question values (1, 1, 1, 'Sample question?', 1, 1, 1, 1, 10, 4, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into answer values (1, 1, 'Sample answer', to_date('09-28-2014', 'MM-DD-YYYY'), 1, 1, 7, 5, 8, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into notification values (1, 1, 1, 'Sample Notification Name', 'Sample Notification Text', 'sample.employee@samplecompany.com', 'Y', sysdate, sysdate, 0, 60, 60, 2, 8, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 commit;
 
 
@@ -426,6 +428,7 @@ insert into question values (question_id_seq.nextval, 3000, 4000, 'How is life a
 insert into question values (question_id_seq.nextval, 3000, 4002, 'Rate your happiness at your company?'                                         , 8016, 12002, 13001, 1, 10, 6, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into question values (question_id_seq.nextval, 3000, 4001, 'How is the food at the cafeteria?'                                        , 8002, 12002, 13001, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into question values (question_id_seq.nextval, 3000, 4001, 'How is your workplace environment?'                                       , 8003, 12002, 13001, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+
 
 --start of dtmdata questions
 insert into question values (question_id_seq.nextval, 3002, 4007, 'How is team doing in your opinion?'                                       , 8018, 12002, 13001, 1, 10, 6, sysdate-3*365, to_date('12-31-9999', 'MM-DD-YYYY'));

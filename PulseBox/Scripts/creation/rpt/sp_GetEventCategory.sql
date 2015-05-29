@@ -23,5 +23,5 @@ when others then
    rollback;  --try to raise an error to test this
 
 
-end sp_GetEventCategory ;
+end sp_GetEventCategory;
 /
