@@ -4,16 +4,16 @@
 declare 
 
 -- set these for emp, dept, company, question, location u want answer for
-v_company_id number	 	:= 3002;
-v_dept_id number 		:= 4007;
-v_loc_id number 		:= 2002;
-v_employee_id number 		:= 6005;
-v_question_id number 		:= 9013;
-v_answer_text varchar2(200)	:= 'Doing OK';
-v_relative_date number		:= 5;
+v_company_id number	 	:= 3005;
+v_dept_id number 		:= 4010;
+v_loc_id number 		:= 2005;
+v_employee_id number 		:= 6029;
+v_question_id number 		:= 9128;
+v_answer_text varchar2(200)	:= 'What can I say?';
+v_relative_date number		:= 3;
 
 -- set this to total # rows you want inserted
-v_rows_to_insert number 	:= 11;
+v_rows_to_insert number 	:= 25;
 
 -- don't touch these counters
 v_counter number 		:= 0;

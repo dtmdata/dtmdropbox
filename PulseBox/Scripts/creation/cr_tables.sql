@@ -15,7 +15,7 @@ drop table DEPARTMENT           cascade constraints;
 drop table INDUSTRY             cascade constraints;
 drop table TEMP_USER_ID	        cascade constraints;
 drop table TEMP_COMPANY_INFO    cascade constraints;
-drop table NOTIFICATION		cascase constraints;
+drop table NOTIFICATION		cascade constraints;
 
 -- ???: As of 10/8/14 we need to add unique constraint to entity_name+entity_end_date to allow for multiple legitmate names.
 
@@ -260,7 +260,7 @@ create table NOTIFICATION
   notification_id		number NOT NULL,
   company_id 			number NOT NULL,
   dept_id			number NOT NULL,
-  notification_name           	varchar2(30),
+  notification_name           	varchar2(100),
   notification_text		varchar2(1000),
   email_addr			varchar2(50),
   enabled			char(1),

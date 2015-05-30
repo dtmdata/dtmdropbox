@@ -49,6 +49,15 @@ Table dropped.
 Table dropped.
 
 
+Table dropped.
+
+
+Table created.
+
+
+Comment created.
+
+
 Table created.
 
 
@@ -263,6 +272,14 @@ Sequence dropped.
 Sequence created.
 
 
+Table => NOTIFICATION.........................................................................
+
+Sequence dropped.
+
+
+Sequence created.
+
+
 
 
 < TRIGGER creation is disabled >
@@ -313,7 +330,13 @@ DML start: Populate tables with default key values, and test data...............
 
 0 rows deleted.
 
+
+0 rows deleted.
+
 INSERT GENERIC/DUMMY DATA............................
+
+1 row created.
+
 
 1 row created.
 
@@ -3007,6 +3030,12 @@ Table altered.
 Table altered.
 
 
+Table altered.
+
+
+Table altered.
+
+
 
 
 Special run by AXE for 2.0 upgrade; add 2 FK ID cols to ANSWER
@@ -3040,6 +3069,14 @@ Table altered.
 
 
 STORED PROCS start: Create Stored Procedures etc........................
+sp_DisplayNotifications:
+
+Procedure created.
+
+sp_fcst_Team_Morale:
+
+Procedure created.
+
 sp_GetCompanyEvents:
 
 Procedure created.
@@ -3048,11 +3085,11 @@ sp_GetDeptsSubordToEmpID:
 
 Procedure created.
 
-sp_GetIndustryForCompany:
+sp_GetEventCategory:
 
 Procedure created.
 
-sp_GetEventCategory:
+sp_GetIndustryForCompany:
 
 Procedure created.
 
@@ -3076,6 +3113,10 @@ sp_getquestions:
 
 Procedure created.
 
+sp_getquestionsbycategory:
+
+Procedure created.
+
 sp_getquestiontype:
 
 Procedure created.
@@ -3092,6 +3133,8 @@ sp_insert_event:
 
 Procedure created.
 
+sp_insert_notification:
+SP2-0310: unable to open file ".\rpt\sp_insert_notification.sql"
 sp_insert_question:
 
 Procedure created.
@@ -3121,6 +3164,10 @@ sp_pulse_pct_participation:
 Procedure created.
 
 sp_pulse_q_category:
+
+Procedure created.
+
+sp_sendnotification:
 
 Procedure created.
 

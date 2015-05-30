@@ -105,4 +105,5 @@ Return to the application all Free Text/Pulse Comments having the rating values 
 Use CSV for rating list. e.g. "1,2,3", or "1,2,5,7,9", or "1,2,3,4,5,6,7,8,9,10" for all.
 
 */
+
 /
