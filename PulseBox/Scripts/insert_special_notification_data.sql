@@ -4,12 +4,12 @@
 declare 
 
 -- set these for emp, dept, company, question, location u want answer for
-v_company_id number	 	:= 3002;
-v_dept_id number 		:= 4007;
-v_loc_id number 		:= 2002;
-v_employee_id number 		:= 6005;
-v_question_id number 		:= 9013;
-v_answer_text varchar2(200)	:= 'Doing really terrible my friend';
+v_company_id number	 	:= 3005;
+v_dept_id number 		:= 4010;
+v_loc_id number 		:= 2005;
+v_employee_id number 		:= 6029;
+v_question_id number 		:= 9035;
+v_answer_text varchar2(200)	:= 'This is not good';
 v_relative_date number		:= 0;
 
 -- set this to total # rows you want inserted
