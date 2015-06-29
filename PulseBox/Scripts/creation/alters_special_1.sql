@@ -24,4 +24,7 @@ alter table EMPLOYEE add (is_used Char Default 'N' NOT NULL);
 --add col for ANSWER table (Axe 5/6/15)
 alter table answer add (answer_yn char(1));
 
+--add acknowledge_date to answer table (Axe 6/28/15)
+alter table answer add (acknowledge_date date);
+
 
