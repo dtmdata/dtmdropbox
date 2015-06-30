@@ -40,6 +40,6 @@ alter table notification add (foreign key (dept_id) references department (dept_
 
 alter table priv add (foreign key (company_id) references company (company_id) enable validate);
 
-
-
+-- acknowledged_by add by axe 6/29/15
+alter table answer add (foreign key (acknowledged_by) references employee (emp_id) enable validate);
 
