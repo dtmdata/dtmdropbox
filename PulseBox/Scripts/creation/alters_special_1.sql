@@ -28,4 +28,7 @@ alter table answer add (answer_yn char(1));
 alter table answer add (ack_date date);
 alter table answer add (ack_by number);
 
+-- add emp_id to notification table dd & axe 7/2/15
+alter table notification add (emp_id number);
+
 

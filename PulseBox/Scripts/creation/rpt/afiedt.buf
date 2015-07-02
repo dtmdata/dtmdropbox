@@ -1,25 +1,21 @@
-select
-  B.industry_id, B.industry_name, A.company_id, A.company_name
-from
-( select
-    MM.industry_id as industry_id, I1.INDUSTRY_NAME as industry_name, MM.company_id as company_id, C.company_name as company_name
-  from
-    MM_INDUSTRY_COMPANY  MM,
-    industry I1,
-    company C
-  where
-    1=1
-    and MM.industry_id = I1.INDUSTRY_ID
-    and MM.COMPANY_ID  = C.COMPANY_ID
-    and MM.company_id  = 3000    --v_IN_company_id  --3000
-) A,
-(select
-  I2.industry_id as industry_id, I2.INDUSTRY_NAME as industry_name, null, null
-from
-  industry I2
-) B
-where
-  A.industry_id(+) = B.industry_id
-order by  B.industry_name, A.company_name
-
+select emp_id, level from 
+(
+    SELECT
+ --      E.dept_id,
+ --      D.dept_name,
+       E.emp_id,
+ --      6029 as "top_lvl_mgr_id",
+ --      SYS_CONNECT_BY_PATH(E.emp_id, ' <= ') as "REPORTING_PATH",
+       LEVEL as "LVL" --what level is subordinate relative to top_lvl_mgr_id ?
+    FROM
+       employee E,
+	   department D
+    WHERE
+       1=1
+       and E.dept_id = D.dept_id
+       and E.company_id = 3005  --v_IN_company_id  --3005 --exec sp_GetEmpsSubordToEmpID(3005, 6029, :rc)
+    CONNECT BY PRIOR E.emp_id = E.manager_id     --testing emp_id: 6034(mid),6043(mid), or 6029(top) or 6059(leaf)
+    START WITH
+       E.manager_id = 6029   --v_IN_emp_id  --emp_id of the person running this report.
+)
 /
