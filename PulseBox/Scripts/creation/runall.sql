@@ -129,8 +129,16 @@ PROMPT sp_sendnotification:
 PROMPT sp_m_get_notifications:
 @.\rpt\sp_m_get_notifications.sql
 
-PROMPT sp_m_get_pulse_comments:
-@.\rpt\sp_m_get_pulse_comments.sql
+PROMPT sp_m_get_MY_pulse_comments:
+@.\rpt\sp_m_get_MY_pulse_comments.sql
+
+PROMPT sp_M_Get_MY_SUB_Pulse_Comments:
+@.\rpt\sp_M_Get_MY_SUB_Pulse_Comments.sql
+
+PROMPT sp_m_upd_ack_answer:
+@.\rpt\sp_m_upd_ack_answer.sql
+
+
 
 PROMPT
 PROMPT (disabled) Run test.RUNALL.sql to compile and run test cases for each proc().

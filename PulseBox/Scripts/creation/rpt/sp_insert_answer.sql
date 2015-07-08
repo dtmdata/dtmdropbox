@@ -26,6 +26,8 @@ v_END_DATE      date     := to_date('12/31/9999','MM/DD/YYYY');v_ANSWER_RATING i
 v_DEPT_ID       integer     := 0;
 v_LOCATION_ID   integer  := 0;
 v_ANSWER_YN varchar2(1)  := '';
+v_ACK_BY        integer;
+v_ACK_DATE      date;
 
 V_Trans_Error Varchar2(100)         := Null;
 V_Trans_Error_Msg Varchar2(200)         := Null;
@@ -72,7 +74,9 @@ v_sql := 'insert into ' || v_tbl || ' values('
 || 'to_date('''    || v_END_DATE   || ''',''DD-MON-YY'')'   || ', '
 || v_DEPT_ID       || ', '
 || v_LOCATION_ID   || ', '
-|| chr(39) || v_ANSWER_YN || chr(39)
+|| chr(39) || v_ANSWER_YN || chr(39) ||', '
+|| v_ACK_BY     ||', '
+|| v_ACK_DATE
 || ')'
 ;
 
@@ -96,7 +100,9 @@ OPEN p_recordset FOR
            END_DATE,
            DEPT_ID,
            LOCATION_ID,
-           ANSWER_YN
+           ANSWER_YN,
+           ACK_BY,
+           ACK_DATE
     from ANSWER
     where
      answer_id=V_ANSWER_ID;

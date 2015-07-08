@@ -2,7 +2,7 @@ create or replace Procedure SP_M_Get_Notifications (IN_company_id        IN  num
                      				    IN_emp_id		 IN  number,
                                               	    p_recordset          OUT SYS_REFCURSOR)
 AS
- 
+
 v_IN_company_id     integer := IN_company_id;
 v_IN_emp_id     integer := IN_emp_id;
 
@@ -13,36 +13,34 @@ BEGIN
   OPEN p_recordset For
      SELECT
 
-NOTIFICATION_ID,
-COMPANY_ID,
+N.NOTIFICATION_ID,
+N.COMPANY_ID,
 N.DEPT_ID,
 D.DEPT_NAME,
-NOTIFICATION_NAME,
-NOTIFICATION_TEXT,
-EMAIL_ADDR,
-ENABLED,
-CREATION_DATE,
-LAST_SENT,
-COUNTER,
-DELAY,
-FREQUENCY,
-MIN_THRESHOLD,
-MAX_THRESHOLD,
-START_DATE,
-END_DATE,
-EMP_ID
-	     
+N.NOTIFICATION_NAME,
+N.NOTIFICATION_TEXT,
+N.EMAIL_ADDR,
+N.ENABLED,
+N.CREATION_DATE,
+N.LAST_SENT,
+N.COUNTER,
+N.DELAY,
+N.FREQUENCY,
+N.MIN_THRESHOLD,
+N.MAX_THRESHOLD,
+N.START_DATE,
+N.END_DATE,
+N.EMP_ID
+
      FROM
         Notification n,
         Department d
      WHERE
-	N.DEPT_ID = D.DEPT_ID 
+	N.DEPT_ID = D.DEPT_ID
+  AND N.EMP_ID =v_IN_emp_id
         AND N.Company_Id = v_IN_company_id
         AND Enabled = 'Y'
-   
-     GROUP BY
-        A.company_id, A.answer_date
-     ORDER BY A.answer_date   --ANS_DT
+     ORDER BY N.creation_date  
   ;
 
 END SP_M_Get_Notifications;
