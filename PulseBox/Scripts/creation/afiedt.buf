@@ -1,3 +1,2 @@
-insert into ANSWER values(10450, 13, 'this FREE TEXT stuff is super cool.', sysdate, 6005, 3002, 9, 5, 5, sysdate, to_date('31-DEC-99','DD-MON-YY'), 
-4007, 2002, 'N')
+select trigger_name from dba_triggers where owner='DTM_DEV' minus select trigger_name from dba_triggers where owner='DTM'
 /

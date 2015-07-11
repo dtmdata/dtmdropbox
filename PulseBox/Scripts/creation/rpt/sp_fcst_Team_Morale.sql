@@ -32,7 +32,7 @@ select
    round((v_IN_target_pulse - AVG_0_DAYS_AGO)/((AVG_0_DAYS_AGO - AVG_N_DAYS_AGO)/(v_IN_num_days_ago)), 2)   "DAYS_TO_REACH_TARGET",
    A.*, B.*
 from
-   ( --M=7 day avg pulse from N=30 days ago:
+   ( --v_IN_window_size=7 day avg pulse from N=v_IN_num_days_ago days ago:
     SELECT
 	      A.company_id                           as COMPANY_ID,
 	      count(*)                               as COUNT_N_DAYS_AGO,
@@ -49,7 +49,7 @@ from
     GROUP BY
         A.company_id
 	) A,
-   ( --M=7 day avg pulse from N=0 days ago:
+   ( --v_IN_window_size=7 day avg pulse from N=0 days ago:
     SELECT
 	      A.company_id                           as COMPANY_ID,
 	      count(*)                               as COUNT_0_DAYS_AGO,
@@ -62,10 +62,11 @@ from
         Answer   A
     WHERE
         A.Company_Id = v_IN_company_id
-        AND trunc(A.answer_date) BETWEEN trunc(sysdate - (0 + v_IN_window_size)) and trunc(sysdate - (0))
+        AND trunc(A.answer_date) BETWEEN trunc(sysdate - (0 + v_IN_window_size)) and trunc(sysdate - (0))  --hardcoded 0's on purpose
     GROUP BY
         A.company_id
 	) B
+where A.company_id = B.company_id
 ;
 
 
@@ -84,9 +85,9 @@ DD:
 20150528.  Initial proc creation, sp_fcst_Team_Morale().
 
 Description:
-Show forecast for when a Company's overall pulse will reach a User-specified target value (1..10).
+Show forecast for when a Company's overall pulse will reach a User-specified Target value (1..10). e.g. pulse =4 now; when will my pulse reach "8" ?
 This initial attempt to forecast is a straight-line extrapolation based on 'N days average' of recent Company Pulse.
-'N' is chosen by User; N(default) = 30days.  Uses y = mx + b to forecast.
+'N' is chosen by User; N(default) = 45days.  Uses y = mx + b to forecast.
 If no rows returned, then slope of N days is either 0(flat), or <0 (downward), (and a message will be returned...??)
 
 */

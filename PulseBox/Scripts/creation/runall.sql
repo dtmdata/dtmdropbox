@@ -46,7 +46,10 @@ PROMPT
 
 
 PROMPT 
-PROMPT STORED PROCS start: Create Stored Procedures etc........................
+PROMPT STORED PROCS start: Create Stored Procedures etc........................putting sp_parse_id_list first so other compile first time -axe 7/11/2015
+
+PROMPT sp_parse_id_list: 
+@.\rpt\sp_parse_id_list.sql
 
 PROMPT sp_DisplayNotifications: 
 @.\rpt\sp_DisplayNotifications.sql
@@ -60,6 +63,9 @@ PROMPT sp_GetCompanyEvents:
 PROMPT sp_GetDeptsSubordToEmpID: 
 @.\rpt\sp_GetDeptsSubordToEmpID.sql
 
+PROMPT sp_GetEmpsSubordToEmpID: 
+@.\rpt\sp_GetEmpsSubordToEmpID.sql
+
 PROMPT sp_GetEventCategory: 
 @.\rpt\sp_GetEventCategory.sql
 
@@ -71,6 +77,9 @@ PROMPT sp_GetLocsSubordToEmpID:
 
 PROMPT sp_getnewevents: 
 @.\rpt\sp_getnewevents.sql
+
+PROMPT Sp_Getpulsebymanager: 
+@.\rpt\Sp_Getpulsebymanager.sql
 
 PROMPT sp_getpulsecomments: 
 @.\rpt\sp_getpulsecomments.sql
@@ -96,14 +105,11 @@ PROMPT sp_insert_answer_text:
 PROMPT sp_insert_event:
 @.\rpt\sp_insert_event.sql
 
-PROMPT sp_insert_notification:
-@.\rpt\sp_insert_notification.sql
+PROMPT sp_insert_notifications:
+@.\rpt\sp_insert_notifications.sql
 
 PROMPT sp_insert_question: 
 @.\rpt\sp_insert_question.sql
-
-PROMPT sp_parse_id_list: 
-@.\rpt\sp_parse_id_list.sql
 
 PROMPT sp_pulse_company: 
 @.\rpt\sp_pulse_company.sql

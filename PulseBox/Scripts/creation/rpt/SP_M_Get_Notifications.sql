@@ -39,8 +39,8 @@ N.EMP_ID
 	N.DEPT_ID = D.DEPT_ID
   AND N.EMP_ID =v_IN_emp_id
         AND N.Company_Id = v_IN_company_id
-        AND Enabled = 'Y'
-     ORDER BY N.creation_date  
+        And Enabled = 'Y'
+     ORDER BY N.creation_date  desc 
   ;
 
 END SP_M_Get_Notifications;

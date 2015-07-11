@@ -46,5 +46,4 @@ when OTHERS then
    raise_application_error (-20002,'Exception OTHERS:  ' || v_sql_error_code || ': '||v_sql_error_msg);
 
 END  sp_m_upd_ack_answer;
-
 /

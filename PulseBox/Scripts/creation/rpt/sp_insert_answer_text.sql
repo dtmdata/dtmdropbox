@@ -66,10 +66,8 @@ v_sql := 'insert into ' || v_tbl || ' values('
 || 'to_date('''    || v_START_DATE || ''',''DD-MON-YY'')'   || ', '
 || 'to_date('''    || v_END_DATE   || ''',''DD-MON-YY'')'   || ', '
 || v_DEPT_ID       || ', '
-|| v_LOCATION_ID   || ', '
-|| chr(39) || v_ANSWER_YN || chr(39) ||', '
-|| v_ACK_BY     ||', '
-|| v_ACK_DATE
+|| V_Location_Id   || ', '
+|| Chr(39) || V_Answer_Yn || Chr(39) ||',NULL,NULL '
 || ')'
 ;
 

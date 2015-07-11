@@ -32,7 +32,7 @@ alter table answer add (foreign key (question_id, company_id) references questio
 
 alter table notification add (foreign key (company_id) references company (company_id) enable validate);
 alter table notification add (foreign key (dept_id) references department (dept_id) enable validate);
-alter table notification add (foreign key (emp_id) references employee (emp_id) enable validate);
+
 
 --commmenting next constraint out as it really tightens things and causes lots of bad data
 --alter table answer add (foreign key (emp_id, company_id, dept_id) references employee (emp_id, company_id, dept_id) enable validate);
@@ -41,6 +41,5 @@ alter table notification add (foreign key (emp_id) references employee (emp_id) 
 
 alter table priv add (foreign key (company_id) references company (company_id) enable validate);
 
--- acknowledged_by add by axe 6/29/15
-alter table answer add (foreign key (ack_by) references employee (emp_id) enable validate);
+
 

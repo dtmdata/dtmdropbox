@@ -3067,8 +3067,27 @@ Table altered.
 Table altered.
 
 
+Table altered.
 
-STORED PROCS start: Create Stored Procedures etc........................
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+
+STORED PROCS start: Create Stored Procedures etc........................putting sp_parse_id_list first so other compile first time -axe 7/11/2015
+sp_parse_id_list:
+
+Procedure created.
+
 sp_DisplayNotifications:
 
 Procedure created.
@@ -3085,6 +3104,10 @@ sp_GetDeptsSubordToEmpID:
 
 Procedure created.
 
+sp_GetEmpsSubordToEmpID:
+
+Procedure created.
+
 sp_GetEventCategory:
 
 Procedure created.
@@ -3098,6 +3121,10 @@ sp_GetLocsSubordToEmpID:
 Procedure created.
 
 sp_getnewevents:
+
+Procedure created.
+
+Sp_Getpulsebymanager:
 
 Procedure created.
 
@@ -3133,13 +3160,11 @@ sp_insert_event:
 
 Procedure created.
 
-sp_insert_notification:
-SP2-0310: unable to open file ".\rpt\sp_insert_notification.sql"
-sp_insert_question:
+sp_insert_notifications:
 
 Procedure created.
 
-sp_parse_id_list:
+sp_insert_question:
 
 Procedure created.
 
@@ -3168,6 +3193,22 @@ sp_pulse_q_category:
 Procedure created.
 
 sp_sendnotification:
+
+Procedure created.
+
+sp_m_get_notifications:
+
+Procedure created.
+
+sp_m_get_MY_pulse_comments:
+
+Procedure created.
+
+sp_M_Get_MY_SUB_Pulse_Comments:
+
+Procedure created.
+
+sp_m_upd_ack_answer:
 
 Procedure created.
 

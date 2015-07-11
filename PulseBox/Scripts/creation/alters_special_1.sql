@@ -27,8 +27,10 @@ alter table answer add (answer_yn char(1));
 --add acknowledge to answer table (Axe 6/28/15)
 alter table answer add (ack_date date);
 alter table answer add (ack_by number);
+alter table answer add (foreign key (ack_by) references employee (emp_id) enable validate);
 
 -- add emp_id to notification table dd & axe 7/2/15
 alter table notification add (emp_id number);
+alter table notification add (foreign key (emp_id) references employee (emp_id) enable validate);
 
 

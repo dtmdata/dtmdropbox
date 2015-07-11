@@ -111,7 +111,7 @@ AND A.dept_id = D.dept_id
         AND A.dept_id       IN(select distinct(id_list) from gtt_id_list where upper(id_type) = upper('DEPT'))   --v_IN_dept_id : use this instead if only want single DEPT_ID passed in for p.box DEMO
         AND A.answer_rating IN(select distinct(ID_LIST) from GTT_ID_LIST WHERE upper(ID_TYPE) = upper('RATING'))
 */
-ORDER BY A.answer_rating ASC  --show "worst" text entries first
+ORDER BY A.answer_date desc
 ;
 
 
