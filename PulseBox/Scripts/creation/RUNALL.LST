@@ -51,6 +51,12 @@ Table dropped.
 
 Table dropped.
 
+drop table CONTACT_INFORMATION  cascade constraints
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
 
 Table created.
 
@@ -152,6 +158,9 @@ Table created.
 
 
 Comment created.
+
+
+Table created.
 
 Create GTT/Global Temp Table, used for storing intermediate parsed values from app-to-st.proc
 

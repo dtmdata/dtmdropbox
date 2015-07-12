@@ -16,6 +16,7 @@ drop table INDUSTRY             cascade constraints;
 drop table TEMP_USER_ID	        cascade constraints;
 drop table TEMP_COMPANY_INFO    cascade constraints;
 drop table NOTIFICATION		cascade constraints;
+drop table CONTACT_INFORMATION  cascade constraints;
 
 -- ???: As of 10/8/14 we need to add unique constraint to entity_name+entity_end_date to allow for multiple legitmate names.
 
@@ -320,7 +321,15 @@ create table TEMP_COMPANY_INFO
 );
 comment on table TEMP_COMPANY_INFO is 'PB/PREMIUM only: Used for initial load of the Companys'' base data file they are required to send to DTM';
 
-
+--added CONTACT_INFORMATION table to be used for web entries when potential customers contact us
+CREATE TABLE CONTACT_INFORMATION
+(	CONTACTDATE DATE, 
+	CONTACTNAME VARCHAR2(100), 
+	CONTACTEMAIL VARCHAR2(100), 
+	CONTACTSUBJECT VARCHAR2(100), 
+	CONTACTMESSAGE VARCHAR2(250), 
+	CONTRACTAGREED VARCHAR2(5)
+);
 
 PROMPT Create GTT/Global Temp Table, used for storing intermediate parsed values from app-to-st.proc
 --@cr_tables_GTT.sql
