@@ -1,2 +1,4 @@
-select trigger_name from dba_triggers where owner='DTM_DEV' minus select trigger_name from dba_triggers where owner='DTM'
+update answer a set a.dept_id = 
+(select b.dept_id from employee b where a.emp_id=b.emp_id)
+where a.company_id=3005
 /
