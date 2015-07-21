@@ -385,7 +385,7 @@ insert into question_category values (category_id_seq.nextval, 3001, 'Workplace'
 insert into question_category values (category_id_seq.nextval, 3002, 'Team Dynamic' , 'Startup Teams Inter-workings' , sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into question_category values (category_id_seq.nextval, 3003, 'Overall Company' , 'Things going on at company level' , sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into question_category values (category_id_seq.nextval, 3004, 'Efficiency' , 'Suggestions for making things more efficient' , sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into question_category values (category_id_seq.nextval, 3005, 'Parking Lot' , 'Improvements to our parking lot' , sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into question_category values (category_id_seq.nextval, 3005, 'Overall Company' , 'Improvements to our company' , sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into question_category values (category_id_seq.nextval, 3006, 'Rec Center' , 'Onsite recreation center' , sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into question_category values (category_id_seq.nextval, 3007, 'Bonus Program' , 'Employee bonus program' , sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into question_category values (category_id_seq.nextval, 3008, 'Flexible Work Schedule' , 'Questions regarding flexible work schedule' , sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
