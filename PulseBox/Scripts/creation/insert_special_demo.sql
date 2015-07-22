@@ -63,8 +63,8 @@ insert into answer values (answer_id_seq.nextval, 9040, 'Have regular team meeti
 insert into answer values (answer_id_seq.nextval, 9040, 'Raise some money so we can do this full time!  Too much fun!'                        , trunc(sysdate-25), 6049, 3005, 5, 1, 5, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2105, null, null, null);
 insert into answer values (answer_id_seq.nextval, 9040, 'Not sure'                        , trunc(sysdate-26), 6050, 3005, 4, 4, 8, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2105, null, null, null);
 insert into answer values (answer_id_seq.nextval, 9040, 'Continue to press on!',                        trunc(sysdate-27), 6051, 3005, 7, 8, 5, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2105, null, null, null);
-insert into answer values (answer_id_seq.nextval, 9040, 'Get customer #1!'                        , trunc(sysdate-28), 6052, 3005, 5, 6, 4, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2105, null, null, null);
-insert into answer values (answer_id_seq.nextval, 9040, 'Continue to make solid progress'                        , trunc(sysdate-29), 6053, 3005, 9, 9, 8, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2105, null, null, null);
+insert into answer values (answer_id_seq.nextval, 9040, 'Get customer #1!'                        , trunc(sysdate), 6052, 3005, 1, 6, 4, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2105, null, null, null);
+insert into answer values (answer_id_seq.nextval, 9040, 'Continue to make solid progress'                        , trunc(sysdate), 6053, 3005, 1, 9, 8, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2105, null, null, null);
 insert into answer values (answer_id_seq.nextval, 9040, 'Spend more time on demo - all of us'                        , trunc(sysdate-30), 6054, 3005, 3, 5, 4, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2105, null, null, null);
 insert into answer values (answer_id_seq.nextval, 9040, 'Next stop IPO!'                        , trunc(sysdate-1), 6055, 3005, 1, 9, 9, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2105, null, null, null);
 
@@ -97,8 +97,8 @@ insert into answer values (answer_id_seq.nextval, 9043, 'Bad'                   
 insert into answer values (answer_id_seq.nextval, 9043, 'OK'                        , trunc(sysdate-26), 6049, 3005, 3, 4, 8, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2005, null, null, null);
 insert into answer values (answer_id_seq.nextval, 9043, 'Solid!'                        , trunc(sysdate-27), 6050, 3005, 4, 8, 5, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2005, null, null, null);
 insert into answer values (answer_id_seq.nextval, 9043, 'Exactly what we need!'                        , trunc(sysdate-28), 6051, 3005, 3, 6, 4, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2005, null, null, null);
-insert into answer values (answer_id_seq.nextval, 9043, 'Not doing a good job lately....'                        , trunc(sysdate-29), 6052, 3005, 5, 9, 8, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2005, null, null, null);
-insert into answer values (answer_id_seq.nextval, 9043, 'Not sure...'                        , trunc(sysdate-30), 6053, 3005, 8, 5, 4, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2005, null, null, null);
+insert into answer values (answer_id_seq.nextval, 9043, 'Not doing a good job lately....'                        , trunc(sysdate), 6052, 3005, 1, 9, 8, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2005, null, null, null);
+insert into answer values (answer_id_seq.nextval, 9043, 'Not sure...'                        , trunc(sysdate), 6053, 3005, 1, 5, 4, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2005, null, null, null);
 insert into answer values (answer_id_seq.nextval, 9043, 'Good, I guess'                        , trunc(sysdate-1), 6054, 3005, 3, 9, 9, sysdate, to_date('12-31-9999','MM-DD-YYYY'), 4010, 2005, null, null, null);
 
 update answer a set a.dept_id = 

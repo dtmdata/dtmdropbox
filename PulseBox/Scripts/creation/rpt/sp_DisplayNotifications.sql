@@ -43,7 +43,8 @@ OPEN p_recordset FOR
     and dept_id IN (select distinct(id_list) from gtt_id_list where upper(id_type) = upper('DEPT'))
     and company_id= v_IN_company_id
     AND last_sent BETWEEN v_IN_start_date_range
-                            AND v_IN_end_date_range;
+                            AND v_IN_end_date_range
+			    ORDER by creation_date DESC;
 
 
 

@@ -74,7 +74,7 @@ OPEN p_recordset FOR
     and         E.event_date BETWEEN v_IN_start_date_range
                                  AND v_IN_end_date_range
     and (E.dept_id = G.id_list and upper(E.event_privacy) = upper('PRIVATE'))
-  order by EVT_DT
+  order by EVT_DT DESC
   ;
 
 

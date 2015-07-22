@@ -45,7 +45,7 @@ BEGIN
                               AND v_IN_end_date_range
         And A.Dept_Id = D.Dept_Id
         AND A.dept_id IN (4007)   
-     ORDER BY A.answer_rating ASC 
+     ORDER BY A.answer_date DESC 
 ;
 
 
