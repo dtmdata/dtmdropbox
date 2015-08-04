@@ -8,6 +8,7 @@ as
 
 v_sql  varchar2(4000) := '';
 v_tbl  varchar2(30)   := 'ANSWER';
+v_ANSWER_TEXT2 varchar2(4000)        := '';
 
 -- assign values for ANSWER table cols
 v_ANSWER_ID     integer  := answer_id_seq.nextval;
@@ -51,26 +52,25 @@ lower(question_text) like lower('FREE TEXT QUESTION')
 and company_id=v_company_id  --each company can have their own Question list, so need this to filter to the correct one for each company.
 ;
 
-
+v_ANSWER_TEXT2 := REPLACE(v_ANSWER_TEXT, '''', '''''');
 
 v_sql := 'insert into ' || v_tbl || ' values('
 || v_ANSWER_ID     ||', '
 || v_QUESTION_ID   ||', '
-|| chr(39) || v_ANSWER_TEXT || chr(39) || ', '    --chr(39) is apostrophe
-|| 'to_date('''    || v_ANSWER_DATE || ''',''DD-MON-YY'')'  || ', '    --insert into ddtest values(to_date('31-dec-99','DD-MON-YY'));
+|| chr(39) || v_ANSWER_TEXT2 || chr(39) || ', '    --chr(39) is apostrophe
+|| 'to_date('''    || v_ANSWER_DATE || ''',''DD-MON-YY HH24:MI:SS'')'  || ', '    --insert into ddtest values(to_date('31-dec-99','DD-MON-YY'));
 || v_EMP_ID        || ', '
 || v_COMPANY_ID    || ', '
 || v_ANSWER_RATING || ', '
 || v_URGENCY       || ', '
 || v_IMPACT        || ', '
-|| 'to_date('''    || v_START_DATE || ''',''DD-MON-YY'')'   || ', '
-|| 'to_date('''    || v_END_DATE   || ''',''DD-MON-YY'')'   || ', '
+|| 'to_date('''    || v_START_DATE || ''',''DD-MON-YY HH24:MI:SS'')'   || ', '
+|| 'to_date('''    || v_END_DATE   || ''',''DD-MON-YY HH24:MI:SS'')'   || ', '
 || v_DEPT_ID       || ', '
-|| V_Location_Id   || ', '
-|| Chr(39) || V_Answer_Yn || Chr(39) ||',NULL,NULL '
+|| v_Location_Id   || ', '
+|| chr(39) || v_Answer_Yn || chr(39) ||',NULL,NULL '
 || ')'
 ;
-
 
 dbms_output.put_line(v_sql);
 execute immediate v_sql;
@@ -111,4 +111,3 @@ When Others Then
    V_Trans_Error_Msg := Substr (Sqlerrm, 1, 512);
    raise_application_error (-20002,'An error has occurred inserting an answer.' || v_trans_error || ','||V_Trans_Error_Msg);  --try to raise an error to test this
 END  sp_insert_answer_text;
-/

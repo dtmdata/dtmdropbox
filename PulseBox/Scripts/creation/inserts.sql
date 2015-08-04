@@ -37,6 +37,11 @@ insert into answer values (1, 1, 'Sample answer', to_date('09-28-2014', 'MM-DD-Y
 insert into notification values (1, 1, 1, 'Sample Notification Name', 'Sample Notification Text', 'sample.employee@samplecompany.com', 'Y', sysdate, sysdate, 0, 60, 60, 2, 8, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 commit;
 
+--insert 3 sample notifications for company 3000 to be used by pb0, pb1 users that we can give to anyone  -axe
+insert into notification values (notification_id_seq.nextval, 3000, 4000, 'Average Pulse', 'Your average team pulse fell below 20%!', 'tom.smith@soc.com', 'Y', sysdate, trunc(sysdate), 0, 60, 60, 2, 8, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'), 6000);
+insert into notification values (notification_id_seq.nextval, 3000, 4001, 'Average Pulse', 'Your average team participation fell below 20%!', 'tom.smith@soc.com', 'Y', sysdate, trunc(sysdate), 0, 60, 60, 2, 8, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'), 6000);
+insert into notification values (notification_id_seq.nextval, 3000, 4002, 'Average Pulse', 'Your average team pulse fell below 20%!', 'tom.smith@soc.com', 'Y', sysdate, trunc(sysdate), 0, 60, 60, 2, 8, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'), 6000);
+
 
 --special IDs: 10 through whatever needed. This is for the hardcoded IDs that the App will be using. 
 insert into question values (10, 1, 1, 'FREE TEXT QUESTION', 1, 12001, 13000, 1, 10, 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
@@ -240,9 +245,9 @@ PROMPT EMPLOYEE................................
 --IDs should start at 6000 in seq definition.   If you have your own dept (even if u have no one reporting to you yet) then that is your dept_id, otherwise you take on your boss's dept_it
 --keep in mind the org structure is determined only by manager_id. Dept_id is just for organization
 insert into employee values (emp_id_seq.nextval, ''    , 'Tom'  , 'T.', 'Smith'  , '', '', '', 'B34R9T6N', 'xyz@yahoo.com' , 3000, 4000, 'tom.smith@soc.com'   , '6505434800', 1  , 'Y', 2000, 2, 5000, 'pass', 'test', to_date('2012-07-01','YYYY-MM-DD'), to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into employee values (emp_id_seq.nextval, 'Mr.' , 'Rich' , 'M.', 'Davis'  , '', '', '', 'Z94R9T6W', 'ABC123'        , 3000, 4001, 'rich.davis@soc.com'  , '6505434800', 1  , 'Y', 2000, 2, 5001, 'pass', 'test', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into employee values (emp_id_seq.nextval, 'Mr'  , 'Raul' , 'X.', 'Herrara', '', '', '', '5WZ45A21', ''              , 3000, 4001, 'raul.herrara@soc.com', '6505434800', 1  , 'Y', 2000, 2, 5002, 'pass', 'test', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
-insert into employee values (emp_id_seq.nextval, 'Sr.' , 'Jack' , 'D.', 'Schidt' , '', '', '', 'B34XYZ6N', 'Capt Jack'     , 3000, 4001, 'jack.schidt@soc.com' , '6505434800', 6000, 'Y', 2000, 2, 5000, 'pass', 'test', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into employee values (emp_id_seq.nextval, 'Mr.' , 'Rich' , 'M.', 'Davis'  , '', '', '', 'Z94R9T6W', 'ABC123'        , 3000, 4001, 'rich.davis@soc.com'  , '6505434800', 6000  , 'N', 2000, 2, 5001, 'pass', 'test', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into employee values (emp_id_seq.nextval, 'Mr'  , 'Raul' , 'X.', 'Herrara', '', '', '', '5WZ45A21', ''              , 3000, 4001, 'raul.herrara@soc.com', '6505434800', 6000  , 'N', 2000, 2, 5002, 'pass', 'test', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into employee values (emp_id_seq.nextval, 'Sr.' , 'Jack' , 'D.', 'Scheidt' , '', '', '', 'B34XYZ6N', 'Capt Jack'     , 3000, 4001, 'jack.schidt@soc.com' , '6505434800', 6000, 'N', 2000, 2, 5000, 'pass', 'test', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 insert into employee values (emp_id_seq.nextval, ''    , 'Bubba' , '' , 'Gump'   , '', '', '', 'B74XTZ45', 'Tom'           , 3001, 4002, 'tom.hanks@stc.com'     , '7208881000', 1  , 'Y', 2001, 4, 5001, 'pass', 'test', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
