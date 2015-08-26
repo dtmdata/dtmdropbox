@@ -33,4 +33,7 @@ alter table answer add (foreign key (ack_by) references employee (emp_id) enable
 alter table notification add (emp_id number);
 alter table notification add (foreign key (emp_id) references employee (emp_id) enable validate);
 
+-- add user_type_id column for EMPLOYEE (100 = employee, 101 = customer)  axe 8/18/2015
+alter table employee add user_type_id number default 100 not null;
+
 

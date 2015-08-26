@@ -17,6 +17,7 @@ drop table TEMP_USER_ID	        cascade constraints;
 drop table TEMP_COMPANY_INFO    cascade constraints;
 drop table NOTIFICATION		cascade constraints;
 drop table CONTACT_INFORMATION  cascade constraints;
+drop table USER_TYPE 		cascade constraints;
 
 -- ???: As of 10/8/14 we need to add unique constraint to entity_name+entity_end_date to allow for multiple legitmate names.
 
@@ -206,6 +207,16 @@ create table PRIV
 );
 comment on table PRIV is 'Multi-use table: reports, app display, other uses...';
 
+create table USER_TYPE
+(
+  user_type_id		number NOT NULL,
+  user_type_name    	varchar2(30),
+  user_type_desc        varchar2(100),
+  start_date            date NOT NULL,
+  end_date              date NOT NULL,
+  constraint user_type_pk primary key (user_type_id) enable
+);
+comment on table USER_TYPE is 'Reference table describing the type for each user';
 
 create table EMPLOYEE
 (

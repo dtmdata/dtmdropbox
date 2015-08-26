@@ -17,6 +17,7 @@ delete from industry;
 delete from TEMP_USER_ID;
 delete from TEMP_COMPANY_INFO;
 delete from NOTIFICATION;
+delete from USER_TYPE;
 
 
 -- insert all generic/dummy data first
@@ -35,6 +36,7 @@ insert into question_type values (1, 'Sample Question Type', 'Generic question t
 insert into question values (1, 1, 1, 'Sample question?', 1, 1, 1, 1, 10, 4, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into answer values (1, 1, 'Sample answer', to_date('09-28-2014', 'MM-DD-YYYY'), 1, 1, 7, 5, 8, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into notification values (1, 1, 1, 'Sample Notification Name', 'Sample Notification Text', 'sample.employee@samplecompany.com', 'Y', sysdate, sysdate, 0, 60, 60, 2, 8, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into user_type values (1, 'Sample User Type', 'Generic user type to be used temporary basis', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 commit;
 
 --insert 3 sample notifications for company 3000 to be used by pb0, pb1 users that we can give to anyone  -axe
@@ -240,6 +242,9 @@ insert into priv values (priv_id_seq.nextval, 1, 'Super User', 'Priv with highes
 insert into priv values (priv_id_seq.nextval, 1, 'Reporter'  , 'Priv with lowest access level' , 1, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 insert into priv values (priv_id_seq.nextval, 1, 'Mid-Level' , 'Priv with mid-level access'    , 3, sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
+PROMPT USER_TYPE
+insert into user_type values (100, 'Employee', 'User type for Employee', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
+insert into user_type values (101, 'Customer', 'User type for Customer', sysdate, to_date('12-31-9999', 'MM-DD-YYYY'));
 
 PROMPT EMPLOYEE................................
 --IDs should start at 6000 in seq definition.   If you have your own dept (even if u have no one reporting to you yet) then that is your dept_id, otherwise you take on your boss's dept_it

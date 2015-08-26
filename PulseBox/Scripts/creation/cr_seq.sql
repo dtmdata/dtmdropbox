@@ -101,6 +101,11 @@ PROMPT Table => NOTIFICATION....................................................
 DROP SEQUENCE notification_id_seq;
 CREATE SEQUENCE notification_id_seq MINVALUE 14000 START WITH 14000 INCREMENT BY 1 CACHE 10;
 
+PROMPT 
+PROMPT Table => USER_TYPE .........................................................................
+DROP SEQUENCE user_type_id_seq;
+CREATE SEQUENCE user_type_id_seq MINVALUE 15000 START WITH 15000 INCREMENT BY 1 CACHE 10;
+
 
 
 

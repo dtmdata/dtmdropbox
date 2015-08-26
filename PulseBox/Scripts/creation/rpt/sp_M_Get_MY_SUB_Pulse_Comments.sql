@@ -1,22 +1,24 @@
-create or replace PROCEDURE     sp_M_Get_MY_SUB_Pulse_Comments (IN_company_id  IN number,
- 						 IN_emp_id	IN number,
+create or replace PROCEDURE sp_m_Get_MY_SUB_Pulse_Comments (
+IN_company_id  IN number,
+IN_emp_id	IN number,
 --                                                 IN_dept_id     IN varchar2,    --list of DeptIDs
---                                                IN_rating_csv  IN varchar2,  --list of numbers, 1-10 inclusive, that User wishes to see corresponding response text for.
---						IN_word_list IN varchar2,  --csv list of keywords to filter by!!
+IN_rating_csv  IN varchar2,  --list of numbers, 1-10 inclusive, that User wishes to see corresponding response text for.
+IN_word_list IN varchar2 DEFAULT NULL,  --*single* string to filter by!!  case-insensitive via upper() !!
 --						IN_location IN varchar2,  --list of location_IDs
 --						IN_level IN varchar2,  --list of org levels, relative to emp_id viewing the data
 --                                                 IN_start_date_range  IN  varchar2 DEFAULT NULL,
 --                                                IN_end_date_range    IN  varchar2 DEFAULT NULL,
-                                                 p_recordset    OUT SYS_REFCURSOR
-                                                    )
+p_recordset    OUT SYS_REFCURSOR
+)
 AS
 
 v_IN_company_id  integer       := IN_company_id;
 v_IN_emp_id  integer       := IN_emp_id;
 /*
 v_IN_dept_id     varchar2(255) := IN_dept_id;
-v_IN_rating_csv  varchar2(255) := IN_rating_csv;
 */
+v_IN_rating_csv  varchar2(255) := IN_rating_csv;
+v_IN_word_list  varchar2(255) := IN_word_list;  --proc will search for entire single string passed in by app
 
 /*
 v_IN_start_date_range  date := to_date(IN_start_date_range,'DD-MON-YYYY');
@@ -47,15 +49,37 @@ end if;
 dbms_output.put_line('Start <=> End date range is: ' || v_IN_start_date_range || ' <=> ' || v_IN_end_date_range);
 */
 
+/*
+Explicitly reassign v_IN_rating_csv to include all 1..10, i.e. all legitimate values.
+This allows all values to be added into GTT table, so SQL will still work as originally intended.
+*/
+if (v_IN_rating_csv = '0') OR (v_IN_rating_csv IS NULL) OR (v_IN_rating_csv = '') then
+	dbms_output.put_line('before v_IN_rating_csv = ' || v_IN_rating_csv);
+	v_IN_rating_csv := '1,2,3,4,5,6,7,8,9,10';
+	dbms_output.put_line('after v_IN_rating_csv = ' || v_IN_rating_csv);
+end if;
+
+--explicitly add-in check for certain words passed in to v_IN_word_list, i.e. ('0', NULL).
+if (v_IN_word_list IS NULL) OR (v_IN_word_list = '0') then
+	dbms_output.put_line('before NULL/0 v_IN_word_list = ' || v_IN_word_list);
+	v_IN_word_list := '';
+	dbms_output.put_line('after NULL/0 v_IN_word_list = ' || v_IN_word_list);
+end if;
+
 
 /*
 || populate table GTT_ID_LIST with RATINGs from the app, i.e. v_IN_rating_csv
 */
 
 /*
-sp_parse_id_list(v_IN_dept_id,      'DEPT');  --inserts individual DEPT_ID values into GTT_ID_LIST table.
-sp_parse_id_list(v_IN_rating_csv, 'RATING');  --inserts individual RATING  values into GTT_ID_LIST table.
+sp_parse_id_list(v_IN_dept_id, 'DEPT');  --inserts individual DEPT_ID values into GTT_ID_LIST table.
 */
+
+sp_parse_id_list(v_IN_rating_csv, 'RATING');  --inserts individual RATING  values into GTT_ID_LIST table.
+--v_IN_word_list := REPLACE(v_IN_word_list, ''', ''''');  --replace any single apostrophe with 1 more
+dbms_output.put_line('before REPLACE: v_IN_word_list >>' || v_IN_word_list || '<<');
+--v_IN_word_list := REPLACE(v_IN_word_list, '''', '''''');  --replace any single apostrophe with 1 more
+dbms_output.put_line('after REPLACE: v_IN_word_list >>' || v_IN_word_list || '<<');
 
 --this is just the pulse texts from the OTHER emps, i.e. <> passed-in emp_id:
   OPEN p_recordset FOR
@@ -104,6 +128,11 @@ sp_parse_id_list(v_IN_rating_csv, 'RATING');  --inserts individual RATING  value
         and A.question_id = Q.question_id
         and Q.type_id = QT.type_id
         and upper(QT.type_name) in (upper('Free Text'), upper('Rating'))
+        and (
+		A.ANSWER_RATING IN(select distinct(id_list) from gtt_id_list where upper(id_type) = upper('RATING'))
+		and
+		upper(A.ANSWER_TEXT) like  upper('%' || v_IN_word_list || '%')
+		)
 /*
 AND A.answer_date BETWEEN v_IN_start_date_range
                               AND v_IN_end_date_range
@@ -128,5 +157,5 @@ when OTHERS then
    v_sql_error_msg  := SQLERRM;
    raise_application_error (-20002,'Exception OTHERS:  ' || v_sql_error_code || ': '||v_sql_error_msg);
 
-END sp_M_Get_MY_SUB_Pulse_Comments;
+END sp_m_Get_MY_SUB_Pulse_Comments;
 /

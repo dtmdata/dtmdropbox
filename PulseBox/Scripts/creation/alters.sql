@@ -26,6 +26,7 @@ alter table employee add (foreign key (company_id) references company (company_i
 alter table employee add (foreign key (manager_id) references employee (emp_id) enable validate);
 alter table employee add (foreign key (location_id) references location (location_id) enable validate);
 alter table employee add (foreign key (priv_id) references priv (priv_id) enable validate);
+alter table employee add (foreign key (user_type_id) references user_type (user_type_id) enable validate);
 
 alter table answer add (foreign key (emp_id) references employee (emp_id) enable validate);
 alter table answer add (foreign key (question_id, company_id) references question (question_id, company_id) enable validate);
